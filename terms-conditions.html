@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLASSX - Building The Future</title>
+  <style>
+    :root {
+      --text: #eaeaea;
+      --muted: #b3b3b3;
+      --accent: #099ADF;
+      --bg: #000000;
+      --card: #0b0b0b;
+      --border: #1a1a1a;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    .container { width: min(1100px, 92vw); margin: 0 auto; }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0; left: 0; right: 0;
+      height: 72px;
+      display: flex; align-items: center;
+      z-index: 10;
+      background: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(0,0,0,0.6) 60%, rgba(0,0,0,0));
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand img { height: 56px; width: auto; display: block; }
+    .brand span { font-weight: 600; letter-spacing: 0.4px; font-size: 14px; color: var(--muted); }
+
+    /* Page */
+    main { padding: 96px 0 60px; }
+    .card {
+      background: linear-gradient(180deg, var(--card), #0f0f0f);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.02) inset, 0 10px 30px rgba(0,0,0,0.5);
+    }
+    h1 { margin: 0 0 8px; font-size: clamp(26px, 4.2vw, 38px); }
+    .subtle { color: var(--muted); margin-bottom: 24px; }
+    h2 { margin: 26px 0 8px; font-size: 20px; }
+    p { margin: 0 0 14px; color: var(--text); }
+    ul { margin: 0 0 16px 18px; color: var(--text); }
+    footer { border-top: 1px solid var(--border); padding: 28px 0; color: var(--muted); font-size: 13px; }
+  </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="brand">
+                <a href="index.html" style="display:flex; align-items:center;">
+                    <img src="assets/logo.png" alt="Logo" />
+                </a>
+</div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="card">
+        <h1>Terms & Conditions</h1>
+        <div class="subtle">Last Updated: <span id="updated-terms">November 10 2025</span></div>
+
+        <h2>1. Acceptance of Terms</h2>
+        <p>By accessing this website, you agree to these Terms & Conditions. If you do not agree, do not use the website.</p>
+
+        <h2>2. Use of Content</h2>
+        <p>All content on this site, including text, branding, graphics, and imagery, is owned or licensed by PLASSX. You may not copy, redistribute, reproduce, or use content for commercial purposes without prior written authorization.</p>
+
+        <h2>3. No Financial Advice / No Investment Solicitation</h2>
+        <p>This website is informational only and does not constitute investment advice, financial recommendations, or an offer/solicitation. Any engagement requires direct negotiation and a formal agreement.</p>
+
+        <h2>4. No Warranty</h2>
+        <p>Information is provided “as-is” without warranties of any kind. PLASSX makes no guarantees as to accuracy, completeness, or fitness for a particular purpose.</p>
+
+        <h2>5. Limitation of Liability</h2>
+        <p>PLASSX shall not be liable for any damages arising from the use or inability to use the website, including indirect or consequential losses.</p>
+
+        <h2>6. Changes</h2>
+        <p>We may update website content or these Terms at any time without notice. The updated version will be posted on this page.</p>
+
+        <h2>7. Governing Law</h2>
+        <p>These Terms are governed under the laws of the United Arab Emirates (unless otherwise required by local jurisdiction).</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <small>
+        © <span id="year"></span> PLASSX. All rights reserved.
+         • <a href="privacy-policy.html">Privacy Policy</a>
+         • <a href="terms-conditions.html">Terms & Conditions</a>
+      </small>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
