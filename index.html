@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PLASSX - Building The Future</title>
+  <title>PLASSX — Coming Soon</title>
 
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16.png">
@@ -12,149 +12,195 @@
   <link rel="shortcut icon" href="icon.png">
 
   <style>
-    :root {
-      --text: #eaeaea;
-      --muted: #b3b3b3;
-      --accent: #099ADF;
-      --bg: #000000;
-      --border: #1a1a1a;
+    :root{
+      --text:#eaeaea; --muted:#b3b3b3; --accent:#099ADF;
+      --bg:#000; --border:#1a1a1a; --card:rgba(0,0,0,.55);
+      --success:#20c997; --error:#ff6b6b;
     }
-
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow: hidden; /* NO SCROLL */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      color:var(--text); background:var(--bg); overflow:hidden; line-height:1.5;
     }
-
-    a { color: var(--accent); text-decoration: none; }
-    .container { width: min(1100px, 92vw); margin: 0 auto; }
-
-    /* Header */
-    header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 72px;
-      display: flex; align-items: center;
-      z-index: 50;
-      background: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(0,0,0,0.6) 60%, rgba(0,0,0,0));
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid var(--border);
+    .container{width:min(1100px,92vw);margin:0 auto}
+    header{
+      position:fixed; top:0; left:0; right:0; height:72px;
+      display:flex; align-items:center; z-index:50;
+      background:linear-gradient(180deg,rgba(0,0,0,.9),rgba(0,0,0,.6) 60%,rgba(0,0,0,0));
+      backdrop-filter:blur(6px); border-bottom:1px solid var(--border);
     }
-    .brand { display: flex; align-items: center; gap: 12px; }
-    .brand img { height: 56px; width: auto; display: block; }
-
-    /* HERO (full screen, no scroll) */
-    .hero {
-      position: relative;
-      height: 100vh;              /* full screen */
-      display: grid;
-      place-items: center;
-      padding-top: 72px;          /* header offset */
-      overflow: hidden;
+    .brand img{height:56px}
+    .hero{
+      position:relative; height:100vh; display:grid; place-items:center;
+      padding-top:72px; overflow:hidden;
     }
-
-    .hero video, .hero .fallback {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      filter: brightness(0.55) contrast(1.05);
-      transform: scale(1.02);
+    .hero video,.hero .fallback{
+      position:absolute; inset:0; width:100%; height:100%;
+      object-fit:cover; filter:brightness(.55) contrast(1.05); transform:scale(1.02);
     }
-
     .hero::after{
-      content: "";
-      position: absolute; inset: 0;
-      background: radial-gradient(80% 80% at 50% 40%,
-        rgba(0,0,0,0) 0%,
-        rgba(0,0,0,0.4) 55%,
-        rgba(0,0,0,0.86) 100%);
-      pointer-events: none;
+      content:""; position:absolute; inset:0;
+      background:radial-gradient(80% 80% at 50% 40%,
+        rgba(0,0,0,0) 0%, rgba(0,0,0,.4) 55%, rgba(0,0,0,.86) 100%);
+      pointer-events:none;
     }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 64px 16px;
+    .hero-content{
+      position:relative; z-index:2; text-align:center;
+      padding:64px 16px; display:grid; gap:18px; justify-items:center;
     }
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(12px, 5vw, 56px);
-      letter-spacing: 0.6px;
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border:1px solid var(--border);
+      border-radius:999px; background:rgba(0,0,0,.35);
+      color:var(--muted); font-size:13px; backdrop-filter:blur(6px);
     }
-
-    /* Footer pinned to bottom OVER hero */
-    footer {
-      position: fixed;
-      left: 0; right: 0; bottom: 0;
-      z-index: 60;
-      padding: 18px 0;
-      background: linear-gradient(0deg, rgba(0,0,0,0.90), rgba(0,0,0,0.55) 60%, rgba(0,0,0,0));
-      border-top: 1px solid var(--border);
-      backdrop-filter: blur(6px);
+    .badge .dot{width:8px;height:8px;border-radius:999px;background:var(--accent);box-shadow:0 0 18px rgba(9,154,223,.55)}
+    h1{margin:0; font-size:clamp(24px,4.6vw,56px); max-width:22ch}
+    p.lead{margin:0; max-width:72ch; color:var(--muted); font-size:clamp(14px,1.4vw,18px)}
+    .card{
+      width:min(760px,92vw); margin-top:10px; padding:18px;
+      border:1px solid var(--border); border-radius:16px;
+      background:var(--card); backdrop-filter:blur(10px);
+      box-shadow:0 8px 28px rgba(0,0,0,.35);
     }
-    footer small {
-      color: var(--muted);
-      letter-spacing: 0.3px;
-      font-size: 13px;
+    .form-row{display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center}
+    .input{
+      width:100%; border:1px solid var(--border); background:rgba(0,0,0,.45);
+      color:var(--text); border-radius:12px; padding:14px; font-size:15px; outline:none;
     }
-    footer a { color: var(--muted); }
-    footer a:hover { color: var(--text); }
-
-    /* Reduce motion preference */
-    @media (prefers-reduced-motion: reduce) {
-      .hero video { display: none; }
-      .hero { background: #020202; }
+    .input:focus{border-color:rgba(9,154,223,.65); box-shadow:0 0 0 3px rgba(9,154,223,.15)}
+    .btn{
+      border:1px solid rgba(9,154,223,.55); background:rgba(9,154,223,.10);
+      color:var(--text); border-radius:12px; padding:14px 16px; font-size:15px;
+      cursor:pointer; white-space:nowrap;
+    }
+    .btn[disabled]{opacity:.55; cursor:not-allowed}
+    .status{margin-top:10px; font-size:13px; min-height:18px}
+    .status.success{color:var(--success)}
+    .status.error{color:var(--error)}
+    .note{margin-top:10px; color:var(--muted); font-size:13px}
+    footer{
+      position:fixed; left:0; right:0; bottom:0; z-index:60;
+      padding:18px 0; border-top:1px solid var(--border);
+      background:linear-gradient(0deg,rgba(0,0,0,.9),rgba(0,0,0,.55) 60%,rgba(0,0,0,0));
+      backdrop-filter:blur(6px);
+    }
+    footer small{color:var(--muted); font-size:13px}
+    @media(max-width:520px){
+      .form-row{grid-template-columns:1fr}
+      .btn{width:100%}
+      .card{padding:14px}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .hero video{display:none}
+      .hero{background:#020202}
     }
   </style>
 </head>
 
 <body>
-  <!-- Header -->
   <header>
     <div class="container">
-      <div class="brand">
-        <a href="index.html" style="display:flex; align-items:center;">
-          <img src="logo.png" alt="Logo" />
-        </a>
-      </div>
+      <a class="brand" href="index.html" style="display:flex;align-items:center;">
+        <img src="logo.png" alt="PLASSX Logo" />
+      </a>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero" aria-label="Hero with background video">
-    <video id="bgvid" autoplay muted loop playsinline poster="assets/video/hero-poster.jpg" preload="metadata" aria-hidden="true">
+  <section class="hero">
+    <video autoplay muted loop playsinline poster="assets/video/hero-poster.jpg" preload="metadata" aria-hidden="true">
       <source src="hero.webm" type="video/webm" />
       <source src="hero.mp4" type="video/mp4" />
     </video>
     <div class="fallback" aria-hidden="true"></div>
 
     <div class="hero-content container">
-      <h1>PLASSX is a private fundraising operating system that helps founders track investor outreach, manage fundraising momentum, and stay in control of their raise.
-</h1>
+      <div class="badge"><span class="dot"></span>Coming soon</div>
+      <h1>PLASSX is launching soon.</h1>
+      <p class="lead">A private fundraising operating system that helps founders track investor outreach, manage fundraising momentum, and stay in control of their raise.</p>
+
+      <div class="card">
+        <form id="waitlistForm" novalidate>
+          <div class="form-row">
+            <input class="input" id="email" type="email" placeholder="Enter your email to get notified" autocomplete="email" required />
+            <button class="btn" id="submitBtn" type="submit">Notify me</button>
+          </div>
+          <div class="status" id="statusMsg" aria-live="polite"></div>
+          <div class="note">We’ll only email you when PLASSX is live. No spam.</div>
+        </form>
+      </div>
     </div>
   </section>
 
-  <!-- Footer (on top of hero, bottom) -->
   <footer>
     <div class="container">
-      <small>
-        © <span id="year"></span> PLASSX. All rights reserved.
-      </small>
+      <small>© <span id="year"></span> PLASSX. All rights reserved.</small>
     </div>
   </footer>
 
-  <script>
-    // Update footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+ <script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ✅ IMPORTANT: Use your /exec URL (from Deploy → Manage deployments)
+  const GOOGLE_SCRIPT_WEB_APP_URL =
+    "https://script.google.com/macros/s/AKfycbxm93NzMKGggnnRrZq-xyaFrlpmzy_woaVIZfPq7Y-lTAqwnEOZHrVZE5hFpdpZcjGP/exec";
+
+  const form = document.getElementById('waitlistForm');
+  const emailInput = document.getElementById('email');
+  const submitBtn = document.getElementById('submitBtn');
+  const statusMsg = document.getElementById('statusMsg');
+
+  function setStatus(message, type) {
+    statusMsg.textContent = message;
+    statusMsg.className = "status" + (type ? " " + type : "");
+  }
+
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(email).trim());
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = emailInput.value.trim().toLowerCase();
+    if (!isValidEmail(email)) {
+      setStatus("Please enter a valid email address.", "error");
+      emailInput.focus();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    setStatus("Submitting…", "");
+
+    try {
+      /**
+       * ✅ no-cors prevents browser CORS blocking.
+       * You cannot read the response, but the row WILL be saved in your Sheet.
+       */
+      await fetch(GOOGLE_SCRIPT_WEB_APP_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
+          email,
+          source: "plassx-coming-soon",
+          page: window.location.href,
+          userAgent: navigator.userAgent
+        })
+      });
+
+      setStatus("✅ You’re on the list. We’ll notify you when PLASSX goes live.", "success");
+      form.reset();
+    } catch (err) {
+      // With no-cors, most failures are true network issues (bad URL / offline).
+      setStatus("Submission failed. Please try again.", "error");
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+</script>
+
+
 </body>
 </html>
