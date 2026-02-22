@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PLASSX — Cognitive Risk Assessment (CRA-1)</title>
+  <meta name="description" content="A structured diagnostic designed to assess cognitive exposure and influence vulnerability across digital environments." />
+  <meta name="theme-color" content="#ffffff" />
+
+  <style>
+    :root{
+      /* Brand blues (from your X) */
+      --blue-dark:#094E9C;
+      --blue:#196FB8;
+      --blue-light:#2599DE;
+
+      --bg:#ffffff;
+      --text: rgba(10,14,22,.92);
+      --muted: rgba(10,14,22,.62);
+      --line: rgba(10,14,22,.12);
+
+      --card: rgba(255,255,255,.86);
+      --card2: rgba(255,255,255,.74);
+
+      --max: 1040px;
+      --r: 18px;
+      --shadow: 0 20px 70px rgba(0,0,0,.12);
+      --shadow2: 0 24px 90px rgba(0,0,0,.18);
+
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+      /* Optional light background image (very subtle) */
+      --bg-image: none; /* e.g. url("assets/bg-white.png") */
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: var(--font);
+      color: var(--text);
+      background:
+        radial-gradient(900px 520px at 12% 10%, rgba(37,153,222,.12), transparent 60%),
+        radial-gradient(820px 520px at 86% 18%, rgba(9,78,156,.10), transparent 62%),
+        var(--bg-image),
+        var(--bg);
+      background-size: cover;
+      background-position: center;
+      overflow-x:hidden;
+    }
+
+    .wrap{
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+      padding: 22px 18px 18px;
+    }
+
+    header{
+      background: #0A0E16;
+  padding: 16px 0;
+      width:100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding: 6px 0 14px;
+    }
+
+    .logo{
+      display:flex; align-items:center; gap:12px;
+      text-decoration:none;
+      user-select:none;
+    }
+    .logo img{height:44px; width:auto; display:block}
+
+    .nav{
+      display:flex; gap:14px; align-items:center; flex-wrap:wrap;
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color: var(--muted);
+    }
+    .nav a{
+      color: var(--muted);
+      text-decoration:none;
+      border-bottom:1px solid transparent;
+      padding:8px 0;
+    }
+    .nav a:hover{border-bottom-color: var(--line); color: var(--text);}
+
+    main{
+      width:100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      flex:1;
+      display:flex;
+      align-items:flex-start;
+      padding: 10px 0 14px;
+    }
+
+    .shell{
+      width:100%;
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.82));
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .topRow{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:16px;
+      padding: 18px 18px 14px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 8px 14px;
+      border-radius:999px;
+      border:1px solid rgba(37,153,222,.28);
+      background: linear-gradient(90deg, rgba(9,78,156,.10), rgba(37,153,222,.10));
+      font-size:11px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      font-weight:900;
+      color: rgba(10,14,22,.80);
+      white-space:nowrap;
+    }
+    .badge i{
+      width:8px; height:8px; border-radius:99px;
+      background: radial-gradient(circle at 30% 30%, var(--blue-light), var(--blue) 70%);
+      box-shadow: 0 0 0 3px rgba(37,153,222,.14);
+    }
+
+    .titleBlock h1{
+      margin:10px 0 6px;
+      font-size: clamp(22px, 2.5vw, 30px);
+      line-height:1.12;
+      letter-spacing:-0.02em;
+      font-weight: 900;
+    }
+    .titleBlock p{
+      margin:0;
+      color: var(--muted);
+      line-height:1.55;
+      font-size: 13px;
+      max-width: 860px;
+    }
+
+    .metaMini{
+      text-align:right;
+      color: var(--muted);
+      font-size: 12px;
+      line-height:1.5;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      white-space:nowrap;
+      padding-top: 4px;
+    }
+    .metaMini code{
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(10,14,22,.86);
+      background: rgba(10,14,22,.05);
+      padding: 2px 6px;
+      border-radius: 8px;
+      border:1px solid rgba(10,14,22,.10);
+    }
+
+    .content{
+      padding: 16px 18px 18px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    /* Progress */
+    .progressWrap{margin: 0 0 6px;}
+    .progressLabel{
+      display:flex; justify-content:space-between; align-items:center;
+      font-size:12px; color: var(--muted);
+      letter-spacing:.14em; text-transform:uppercase;
+      margin-bottom:8px;
+    }
+    .bar{
+      width:100%; height:10px; border-radius:999px;
+      background: rgba(10,14,22,.06);
+      overflow:hidden;
+      border:1px solid rgba(10,14,22,.10);
+    }
+    .bar > div{
+      height:100%;
+      width:0%;
+      border-radius:999px;
+      background: linear-gradient(90deg, var(--blue) 0%, var(--blue-light) 100%);
+      transition: width .28s ease;
+    }
+
+    /* Question area */
+    .panel{
+      border:1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255,255,255,.86);
+      box-shadow: 0 12px 40px rgba(0,0,0,.06);
+    }
+
+    .screen{
+      transition: opacity .18s ease, transform .18s ease;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .screen.fadeOut{ opacity:0; transform: translateY(6px); }
+
+    .q{
+      margin: 6px 0 10px;
+      font-weight: 900;
+      letter-spacing:-0.01em;
+      line-height:1.26;
+      font-size: 16px;
+    }
+    .hint{
+      margin:0 0 14px;
+      color: var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    .answers{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    @media (max-width: 560px){
+      .answers{grid-template-columns:1fr}
+      .metaMini{display:none}
+    }
+
+    .ans{
+      text-align:left;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border:1px solid rgba(10,14,22,.12);
+      background: rgba(255,255,255,.92);
+      color: var(--text);
+      cursor:pointer;
+      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+      font-weight: 780;
+    }
+    .ans:hover{
+      transform: translateY(-1px);
+      border-color: rgba(37,153,222,.40);
+      box-shadow: 0 10px 26px rgba(0,0,0,.06);
+    }
+    .ans.selected{
+      border-color: rgba(37,153,222,.78);
+      box-shadow: 0 0 0 4px rgba(37,153,222,.14) inset, 0 10px 26px rgba(0,0,0,.06);
+      background: rgba(255,255,255,.98);
+    }
+
+    .controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 14px;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .btn{
+      height:42px;
+      padding: 0 14px;
+      border:none;
+      border-radius: 14px;
+      font-weight: 900;
+      letter-spacing:.02em;
+      cursor:pointer;
+      transition: transform .12s ease, opacity .12s ease;
+    }
+    .btn:active{transform: translateY(1px)}
+    .btn.primary{
+      background: linear-gradient(90deg, var(--blue) 0%, var(--blue-light) 100%);
+      color:#ffffff;
+      box-shadow: var(--shadow);
+    }
+    .btn.ghost{
+      background: transparent;
+      color: var(--text);
+      border:1px solid rgba(10,14,22,.14);
+    }
+    .btn:disabled{opacity:.45; cursor:not-allowed}
+
+    .status{
+      margin-top: 10px;
+      min-height: 20px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .status.ok{color: rgba(18,140,70,.92)}
+    .status.err{color: rgba(190,40,40,.92)}
+
+    footer{
+      width:100%;
+      max-width:var(--max);
+      margin:0 auto;
+      padding-top: 18px;
+      border-top:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      color:var(--muted);
+      font-size:12px;
+      flex-wrap:wrap;
+    }
+
+    /* ---------------- Modal (Results popup) ---------------- */
+    .modalOverlay{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.46);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      z-index: 9999;
+    }
+    .modalOverlay.show{display:flex;}
+    .modal{
+      width: min(820px, 100%);
+      background: rgba(255,255,255,.96);
+      border:1px solid rgba(10,14,22,.12);
+      border-radius: 26px;
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      transform: translateY(8px);
+      opacity: 0;
+      transition: transform .18s ease, opacity .18s ease;
+    }
+    .modalOverlay.show .modal{
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .modalTop{
+      padding: 18px 18px 12px;
+      border-bottom:1px solid rgba(10,14,22,.12);
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .modalTop h2{
+      margin:0 0 6px;
+      font-size: 18px;
+      font-weight: 950;
+      letter-spacing:-0.01em;
+    }
+    .modalTop p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.5;
+      max-width: 680px;
+    }
+
+    .modalBody{
+      padding: 16px 18px 18px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 820px){
+      .modalBody{grid-template-columns:1fr;}
+    }
+
+    .box{
+      border:1px solid rgba(10,14,22,.12);
+      border-radius: 18px;
+      padding: 14px;
+      background: rgba(255,255,255,.92);
+    }
+    .scoreBig{
+      font-size: 54px;
+      font-weight: 980;
+      letter-spacing:-0.04em;
+      margin: 4px 0 4px;
+      color: rgba(10,14,22,.92);
+    }
+    .cat{
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color: rgba(10,14,22,.62);
+      margin: 0 0 10px;
+    }
+    .desc{
+      margin:0;
+      color: rgba(10,14,22,.66);
+      font-size: 13px;
+      line-height:1.55;
+    }
+
+    .metric{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 0;
+      border-top:1px solid rgba(10,14,22,.10);
+    }
+    .metric:first-of-type{border-top:none}
+    .metric b{font-size:13px}
+    .metric span{color: rgba(10,14,22,.60); font-size:12px}
+
+    .row{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .input{
+      flex: 1 1 260px;
+      min-width: 240px;
+      height: 44px;
+      padding: 0 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(10,14,22,.14);
+      background: rgba(10,14,22,.03);
+      color: rgba(10,14,22,.92);
+      outline:none;
+    }
+    .input:focus{
+      border-color: rgba(37,153,222,.85);
+      box-shadow: 0 0 0 4px rgba(37,153,222,.18);
+    }
+    .micro{
+      margin: 10px 0 0;
+      color: rgba(10,14,22,.60);
+      font-size: 12px;
+      line-height:1.5;
+    }
+  </style>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-82MYPRK7E1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-82MYPRK7E1');
+</script>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <a class="logo" href="index.html" title="PLASSX">
+        <img src="plassx-logo.png" alt="PLASSX" />
+      </a>
+      <div class="nav">
+        <a href="index.html#notify">Waitlist</a>
+        <a href="#assessment">CRA-1</a>
+      </div>
+    </header>
+
+    <main id="assessment">
+      <div class="shell">
+        <div class="topRow">
+          <div class="titleBlock">
+             <h1>PLASSX Cognitive Risk Assessment</h1>
+            <p>
+              A structured diagnostic designed to assess cognitive exposure and influence vulnerability across digital environments.
+              This instrument provides a directional profile — not medical or clinical advice.
+            </p>
+          </div>
+          <div class="metaMini">
+            <div>Version <code>1.0</code></div>
+            <div>~90 seconds</div>
+            <div>12 items</div>
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="progressWrap">
+            <div class="progressLabel">
+              <span id="progressText">Item 1 of 12</span>
+              <span id="progressPct">0%</span>
+            </div>
+            <div class="bar"><div id="barFill"></div></div>
+          </div>
+
+          <section class="panel" aria-label="Assessment">
+            <div class="screen" id="screen">
+              <p class="q" id="qText"></p>
+              <p class="hint" id="qHint"></p>
+              <div class="answers" id="answers"></div>
+            </div>
+
+            <div class="controls">
+              <button class="btn ghost" id="backBtn" type="button">Back</button>
+              <button class="btn primary" id="nextBtn" type="button" disabled>Next</button>
+            </div>
+
+            <div id="submitStatus" class="status" aria-live="polite"></div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> PLASSX</div>
+      <div>CRA-1 is a directional diagnostic; not medical advice.</div>
+    </footer>
+  </div>
+
+  <!-- Results Modal (NO close button, NO copy button) -->
+  <div class="modalOverlay" id="modalOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modalTop">
+        <div>
+          <h2 id="modalTitle">CRA-1 Results</h2>
+          <p>Your cognitive exposure profile has been generated. You may save your results and request launch access.</p>
+        </div>
+        <!-- Close button removed -->
+      </div>
+
+      <div class="modalBody">
+        <div class="box">
+          <div class="badge" style="margin:0 0 12px;"><i></i> Cognitive Risk Profile</div>
+          <div class="scoreBig" id="mScore">—</div>
+          <div class="cat" id="mCat">—</div>
+          <p class="desc" id="mText">—</p>
+
+          <div class="row" style="margin-top:14px;">
+            <!-- Copy button removed -->
+            <button class="btn primary" id="shareBtn" type="button">Share</button>
+          </div>
+          <div id="shareStatus" class="status" aria-live="polite"></div>
+        </div>
+
+        <div class="box">
+          <div class="badge" style="margin:0 0 12px;"><i></i> Breakdown</div>
+
+          <div class="metric">
+            <div><b>Emotional Trigger Sensitivity</b><br><span>0–25</span></div>
+            <b id="mD1">—</b>
+          </div>
+          <div class="metric">
+            <div><b>Information Source Diversity</b><br><span>0–25</span></div>
+            <b id="mD2">—</b>
+          </div>
+          <div class="metric">
+            <div><b>Algorithmic Dependency</b><br><span>0–25</span></div>
+            <b id="mD3">—</b>
+          </div>
+          <div class="metric">
+            <div><b>Persuasion Awareness</b><br><span>0–25</span></div>
+            <b id="mD4">—</b>
+          </div>
+
+          <div style="margin-top:14px; border-top:1px solid rgba(10,14,22,.10); padding-top:14px;">
+            <div class="badge" style="margin:0 0 10px;"><i></i> Launch Access</div>
+            <div class="row">
+              <input class="input" id="emailInput" type="email" placeholder="Enter your email" />
+              <button class="btn primary" id="emailBtn" type="button">Submit</button>
+            </div>
+            <p class="micro">No spam. One email at launch. Your CRA-1 score will be linked to this email.</p>
+            <div id="emailStatus" class="status" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ✅ Paste your Google Apps Script Web App URL (must end with /exec)
+    const GAS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxm93NzMKGggnnRrZq-xyaFrlpmzy_woaVIZfPq7Y-lTAqwnEOZHrVZE5hFpdpZcjGP/exec";
+
+    // Dimensions (each 0..25)
+    const DIM = { ETS:0, ISD:1, AD:2, PA:3 };
+
+    const QUESTIONS = [
+      { d: DIM.ETS, dir:+1, text:"How often do you experience strong emotion immediately after consuming online content?", hint:"Consider anger, fear, outrage, or euphoria within the first few minutes." },
+      { d: DIM.ETS, dir:+1, text:"How often do you consume content specifically because it is emotionally intense?", hint:"Examples: outrage clips, shocking headlines, emotionally charged commentary." },
+      { d: DIM.PA,  dir:-1, text:"How often do you pause to identify what a piece of content is trying to make you feel or do?", hint:"E.g., buy, vote, hate, fear, praise, share, donate." },
+
+      { d: DIM.ISD, dir:-1, text:"How diverse are your information sources in a typical week?", hint:"Independent sources, different viewpoints, long-form, primary data, etc." },
+      { d: DIM.ISD, dir:+1, text:"How often is your information primarily delivered through one platform feed?", hint:"Examples: one social app, one video app, one messaging channel." },
+      { d: DIM.ISD, dir:-1, text:"How often do you verify a headline or claim before sharing it?", hint:"Verification can be as simple as opening the article or checking a second source." },
+
+      { d: DIM.AD,  dir:+1, text:"How often do you rely on algorithmic recommendations to choose what to watch or read next?", hint:"Autoplay, “for you” feeds, recommended posts, suggested videos." },
+      { d: DIM.AD,  dir:+1, text:"How difficult is it for you to stop scrolling once you start?", hint:"This reflects behavioral capture, not willpower." },
+      { d: DIM.AD,  dir:+1, text:"How often do you consume information in short-form formats (<60 seconds)?", hint:"Short-form increases exposure to high-velocity persuasion patterns." },
+
+      { d: DIM.PA,  dir:-1, text:"How confident are you in detecting manipulation techniques in content?", hint:"Examples: framing, loaded language, false dilemmas, selective evidence." },
+      { d: DIM.PA,  dir:-1, text:"How often do you question why a specific piece of content was shown to you?", hint:"Consider incentives: engagement, advertising, influence, coordination." },
+      { d: DIM.PA,  dir:-1, text:"How often do you intentionally diversify what your feed shows you?", hint:"Examples: following opposing views, clearing watch history, using lists." },
+    ];
+
+    const ANSWERS = [
+      { label:"Never / Not at all", v:0 },
+      { label:"Rarely", v:1 },
+      { label:"Sometimes", v:2 },
+      { label:"Often", v:3 },
+      { label:"Very often / Always", v:4 },
+    ];
+
+    const state = {
+      i: 0,
+      a: Array(QUESTIONS.length).fill(null),
+      result: null
+    };
+
+    const screen = document.getElementById("screen");
+    const qText = document.getElementById("qText");
+    const qHint = document.getElementById("qHint");
+    const answersEl = document.getElementById("answers");
+    const backBtn = document.getElementById("backBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const barFill = document.getElementById("barFill");
+    const progressText = document.getElementById("progressText");
+    const progressPct = document.getElementById("progressPct");
+    const submitStatus = document.getElementById("submitStatus");
+
+    // Modal elements
+    const modalOverlay = document.getElementById("modalOverlay");
+
+    const mScore = document.getElementById("mScore");
+    const mCat = document.getElementById("mCat");
+    const mText = document.getElementById("mText");
+    const mD1 = document.getElementById("mD1");
+    const mD2 = document.getElementById("mD2");
+    const mD3 = document.getElementById("mD3");
+    const mD4 = document.getElementById("mD4");
+
+    const shareBtn = document.getElementById("shareBtn");
+    const shareStatus = document.getElementById("shareStatus");
+
+    const emailInput = document.getElementById("emailInput");
+    const emailBtn = document.getElementById("emailBtn");
+    const emailStatus = document.getElementById("emailStatus");
+
+    function clamp(n,min,max){ return Math.max(min, Math.min(max,n)); }
+    function setStatus(el, msg, type){
+      el.className = "status" + (type ? (" " + type) : "");
+      el.textContent = msg || "";
+    }
+
+    function transitionRender(fn){
+      screen.classList.add("fadeOut");
+      setTimeout(() => {
+        fn();
+        screen.classList.remove("fadeOut");
+      }, 140);
+    }
+
+    function render(){
+      const total = QUESTIONS.length;
+      const i = state.i;
+
+      progressText.textContent = `Item ${i+1} of ${total}`;
+      const pct = Math.round((i / total) * 100);
+      progressPct.textContent = `${pct}%`;
+      barFill.style.width = `${pct}%`;
+
+      const q = QUESTIONS[i];
+      qText.textContent = q.text;
+      qHint.textContent = q.hint || "";
+
+      answersEl.innerHTML = "";
+      ANSWERS.forEach((opt) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "ans" + (state.a[i] === opt.v ? " selected" : "");
+        btn.textContent = opt.label;
+        btn.addEventListener("click", () => {
+          state.a[i] = opt.v;
+          setStatus(submitStatus, "");
+          render();
+          nextBtn.disabled = false;
+        });
+        answersEl.appendChild(btn);
+      });
+
+      backBtn.disabled = (i === 0);
+      nextBtn.textContent = (i === total - 1) ? "Finish" : "Next";
+      nextBtn.disabled = (state.a[i] === null);
+    }
+
+    function computeScores(){
+      const sum = [0,0,0,0];
+      const itemsPerDim = [0,0,0,0];
+      const maxPerItem = 4;
+
+      for(let idx=0; idx<QUESTIONS.length; idx++){
+        const ans = state.a[idx];
+        if(ans === null) continue;
+
+        const q = QUESTIONS[idx];
+        itemsPerDim[q.d] += 1;
+
+        const riskV = (q.dir === +1) ? ans : (maxPerItem - ans);
+        sum[q.d] += riskV;
+      }
+
+      const dim = sum.map((s, di) => {
+        const denom = itemsPerDim[di] * maxPerItem;
+        if(denom === 0) return null;
+        return Math.round((s / denom) * 25);
+      });
+
+      const available = dim.filter(v => v !== null);
+      const total = (available.length === 0) ? null : Math.round(available.reduce((a,b)=>a+b,0) * (4 / available.length));
+      return { dim, total };
+    }
+
+    function category(total){
+      if(total === null) return { label:"Not available", text:"Complete the assessment to generate results." };
+      if(total <= 30) return { label:"Low Cognitive Exposure", text:"Your responses indicate relatively low exposure to high-intensity persuasion environments. Maintain source diversity and verification behaviors to preserve decision integrity over time." };
+      if(total <= 60) return { label:"Moderate Cognitive Exposure", text:"Your profile suggests moderate exposure to algorithmic influence environments. Increasing verification habits and diversifying information sources may reduce cognitive risk." };
+      if(total <= 80) return { label:"High Cognitive Exposure", text:"Your responses indicate high exposure to persuasion-optimized information environments. Consider reducing algorithmic feed dependency and strengthening verification and source diversification behaviors." };
+      return { label:"Cognitive Vulnerability", text:"Your profile indicates very high exposure and potential vulnerability to influence-optimized environments. Consider immediate reduction of high-velocity feeds, stronger verification routines, and intentional source diversification." };
+    }
+
+    function openModal(result){
+      mScore.textContent = String(result.total);
+      mCat.textContent = result.cat.label;
+      mText.textContent = result.cat.text;
+
+      mD1.textContent = `${result.dim[0]}/25`;
+      mD2.textContent = `${result.dim[1]}/25`;
+      mD3.textContent = `${result.dim[2]}/25`;
+      mD4.textContent = `${result.dim[3]}/25`;
+
+      setStatus(shareStatus, "");
+      setStatus(emailStatus, "");
+      emailBtn.disabled = false;
+      emailInput.disabled = false;
+
+      modalOverlay.classList.add("show");
+      modalOverlay.setAttribute("aria-hidden", "false");
+    }
+
+    function closeModal(){
+      modalOverlay.classList.remove("show");
+      modalOverlay.setAttribute("aria-hidden", "true");
+    }
+
+    function resultShareText(){
+      const r = state.result;
+      if(!r) return `PLASSX Cognitive Risk Assessment (CRA-1)\nAssess yours: ${location.href}`;
+
+      return `PLASSX Cognitive Risk Assessment (CRA-1)\nScore: ${r.total}/100\nCategory: ${r.cat.label}\n\nBreakdown:\n- Emotional Trigger Sensitivity: ${r.dim[0]}/25\n- Information Source Diversity: ${r.dim[1]}/25\n- Algorithmic Dependency: ${r.dim[2]}/25\n- Persuasion Awareness: ${r.dim[3]}/25\n\nAssess yours: ${location.href}`;
+    }
+
+    async function postToGAS(payload){
+      await fetch(GAS_WEBAPP_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+    }
+
+    function isValidEmail(email){
+      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    }
+
+    backBtn.addEventListener("click", () => {
+      transitionRender(() => {
+        state.i = clamp(state.i - 1, 0, QUESTIONS.length - 1);
+        render();
+      });
+    });
+
+    nextBtn.addEventListener("click", async () => {
+      if(state.a[state.i] === null) return;
+
+      if(state.i < QUESTIONS.length - 1){
+        transitionRender(() => {
+          state.i += 1;
+          render();
+        });
+      }else{
+        // Finish -> compute results -> open modal
+        if(!state.a.every(v => v !== null)){
+          setStatus(submitStatus, "Please answer all items before finishing.", "err");
+          return;
+        }
+
+        const { dim, total } = computeScores();
+        const cat = category(total);
+        state.result = { dim, total, cat };
+
+        setStatus(submitStatus, "Assessment complete. Opening results…", "ok");
+        openModal(state.result);
+      }
+    });
+
+    // Modal close handlers (no close button, but still closable by outside click / ESC)
+    modalOverlay.addEventListener("click", (e) => {
+      if(e.target === modalOverlay) closeModal();
+    });
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape" && modalOverlay.classList.contains("show")) closeModal();
+    });
+
+    // Share (no Copy)
+    shareBtn.addEventListener("click", async () => {
+      const text = resultShareText();
+      try{
+        if(navigator.share){
+          await navigator.share({ title:"PLASSX CRA-1", text });
+          setStatus(shareStatus, "Shared.", "ok");
+        }else{
+          // Fallback: copy to clipboard if share not supported
+          await navigator.clipboard.writeText(text);
+          setStatus(shareStatus, "Share not supported. Text copied to clipboard.", "ok");
+        }
+      }catch(_){
+        // user canceled / blocked
+      }
+    });
+
+    // Email submit to Google Sheet (your existing Apps Script)
+    emailBtn.addEventListener("click", async () => {
+      if(!state.result){
+        setStatus(emailStatus, "No result available.", "err");
+        return;
+      }
+      if(!GAS_WEBAPP_URL || GAS_WEBAPP_URL.includes("PASTE_YOUR_WEB_APP_URL_HERE")){
+        setStatus(emailStatus, "Web App URL not configured.", "err");
+        return;
+      }
+
+      const email = String(emailInput.value || "").trim().toLowerCase();
+      if(!isValidEmail(email)){
+        setStatus(emailStatus, "Please enter a valid email address.", "err");
+        return;
+      }
+
+      const r = state.result;
+
+      // Keep Apps Script unchanged: write scores into Source field.
+      const payload = {
+        email,
+        source: `CRA-1 | total=${r.total} | ETS=${r.dim[0]} ISD=${r.dim[1]} AD=${r.dim[2]} PA=${r.dim[3]} | ${r.cat.label}`,
+        page: window.location.href,
+        userAgent: navigator.userAgent
+      };
+
+      try{
+        setStatus(emailStatus, "Submitting…");
+        await postToGAS(payload);
+        setStatus(emailStatus, "Saved. You will receive launch access.", "ok");
+        emailBtn.disabled = true;
+        emailInput.disabled = true;
+      }catch(err){
+        setStatus(emailStatus, "Error saving email. Please try again.", "err");
+      }
+    });
+
+    // init
+    render();
+  </script>
+</body>
+</html>
