@@ -1183,6 +1183,32 @@ select {
   text-align: right;
 }
 
+.footer-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: auto;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(245, 245, 242, 0.82);
+  transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social svg {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+}
+
+.footer-social:hover,
+.footer-social:focus-visible {
+  color: var(--text);
+  border-color: rgba(49, 119, 204, 0.4);
+  background: rgba(49, 119, 204, 0.08);
+  transform: translateY(-1px);
+}
+
 .success-modal {
   position: fixed;
   inset: 0;
@@ -2196,6 +2222,10 @@ select {
 
   .footer-meta {
     text-align: left;
+  }
+
+  .footer-social {
+    margin-left: 0;
   }
 
   .footer-brand p {
