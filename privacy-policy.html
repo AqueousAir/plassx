@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | PLASSX</title>
+  <meta name="description" content="Read the PLASSX Privacy Policy and learn how information is collected, used, processed, and protected on the platform.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0B0C0F">
+  <meta name="color-scheme" content="dark">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-82MYPRK7E1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-82MYPRK7E1");
+  </script>
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="assets/img/favicon.png">
+  <style>
+    :root {
+      --bg-primary: #0B0C0F;
+      --bg-secondary: #111317;
+      --accent: #3B82F6;
+      --text-primary: #E5E7EB;
+      --text-secondary: #9CA3AF;
+      --text-muted: #6B7280;
+      --line: rgba(255,255,255,0.08);
+      --transition: 240ms cubic-bezier(.22,1,.36,1);
+      --max-width: 1080px;
+      --nav-height: 84px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      font-family: Inter, "SF Pro Display", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text-primary);
+      background:
+        radial-gradient(circle at 18% 12%, rgba(59,130,246,0.12), transparent 22%),
+        radial-gradient(circle at 82% 10%, rgba(59,130,246,0.08), transparent 22%),
+        linear-gradient(180deg, rgba(255,255,255,0.015), transparent 18%),
+        linear-gradient(180deg, #0b0c0f 0%, #0d0f13 46%, #0a0b0e 100%);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.55), transparent 85%);
+      opacity: 0.24;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: var(--nav-height);
+      background: rgba(11, 12, 15, 0.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max-width));
+      margin: 0 auto;
+    }
+
+    .nav-wrap {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .brand img {
+      height: 34px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 18px rgba(59,130,246,0.12));
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      transition: color var(--transition);
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: var(--text-primary);
+      outline: none;
+    }
+
+    main {
+      padding: 56px 0 96px;
+    }
+
+    .hero {
+      padding: 42px 0 34px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #c7d2fe;
+      font-size: 0.77rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(59,130,246,0), rgba(59,130,246,0.8));
+    }
+
+    h1 {
+      margin: 18px 0 0;
+      font-size: clamp(2.7rem, 6vw, 4.8rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      max-width: 24ch;
+    }
+
+    .hero p {
+      margin: 22px 0 0;
+      color: var(--text-secondary);
+      max-width: 44rem;
+      font-size: 1.05rem;
+    }
+
+    .policy {
+      padding-top: 28px;
+    }
+
+    .policy-section {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .policy-section h2 {
+      margin: 0 0 16px;
+      font-size: clamp(1.35rem, 2vw, 1.8rem);
+      letter-spacing: -0.03em;
+    }
+
+    .policy-section p {
+      margin: 0 0 14px;
+      color: var(--text-secondary);
+      max-width: 52rem;
+    }
+
+    .policy-section ul {
+      list-style: none;
+      margin: 12px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .policy-section li {
+      position: relative;
+      padding-left: 18px;
+      color: var(--text-secondary);
+    }
+
+    .policy-section li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.78em;
+      width: 8px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(59,130,246,0.85), rgba(59,130,246,0.18));
+    }
+
+    .contact-line {
+      color: var(--text-primary);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 24px;
+      color: var(--text-secondary);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .footer-brand img {
+      height: 28px;
+      width: auto;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 0 16px rgba(59,130,246,0.1));
+    }
+
+    .footer-note {
+      color: var(--text-secondary);
+    }
+
+    .footer-meta {
+      display: grid;
+      justify-items: end;
+      gap: 16px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .footer-links a,
+    .footer-social {
+      transition: color var(--transition), border-color var(--transition), background var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--text-primary);
+      outline: none;
+    }
+
+    .footer-social {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--line);
+      color: var(--text-secondary);
+    }
+
+    .footer-social:hover,
+    .footer-social:focus-visible {
+      color: #dbeafe;
+      border-color: rgba(59,130,246,0.34);
+      background: rgba(59,130,246,0.08);
+      box-shadow: 0 0 18px rgba(59,130,246,0.16);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .footer-social svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .footer-bottom {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 900px) {
+      :root { --nav-height: 78px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-meta { justify-items: start; }
+      .footer-links { justify-content: flex-start; }
+    }
+
+    @media (max-width: 720px) {
+      .container { width: min(calc(100% - 28px), var(--max-width)); }
+      main { padding: 32px 0 72px; }
+      h1 { font-size: clamp(2.3rem, 10vw, 3.4rem); }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="PLASSX home">
+        <img src="assets/img/plassx-logo.png" alt="PLASSX logo">
+      </a>
+      <a class="nav-link" href="index.html">Back to Home</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Privacy Policy</span>
+        <h1>PRIVACY POLICY — PLASSX</h1>
+        <p>This Privacy Policy explains how PLASSX collects, uses, processes, and protects information when you use the platform.</p>
+      </div>
+    </section>
+
+    <section class="policy">
+      <div class="container">
+        <div class="policy-section">
+          <h2>1. Introduction</h2>
+          <p>PLASSX (“PLASSX”, “we”, “our”, or “us”) is a predictive career intelligence platform designed to help users understand where professional opportunities may emerge and how to position themselves accordingly.</p>
+          <p>This Privacy Policy explains how we collect, use, process, and protect your information when you use our platform.</p>
+          <p>By using PLASSX, you agree to the terms outlined in this Privacy Policy.</p>
+        </div>
+
+        <div class="policy-section">
+          <h2>2. Information We Collect</h2>
+          <p><strong>2.1 Information You Provide</strong></p>
+          <ul>
+            <li>Name</li>
+            <li>Email address</li>
+            <li>Account credentials</li>
+            <li>Resume/CV content</li>
+            <li>Professional experience</li>
+            <li>Skills, roles, and preferences</li>
+            <li>Career goals and targets</li>
+            <li>Any content you voluntarily submit</li>
+          </ul>
+          <p style="margin-top:22px;"><strong>2.2 Automatically Collected Data</strong></p>
+          <ul>
+            <li>Device information</li>
+            <li>IP address</li>
+            <li>Browser type</li>
+            <li>Usage data (pages visited, actions taken)</li>
+            <li>Session behavior</li>
+            <li>Interaction with platform features</li>
+          </ul>
+          <p style="margin-top:22px;"><strong>2.3 External Data Signals</strong></p>
+          <p>PLASSX processes publicly available and third-party data sources, including:</p>
+          <ul>
+            <li>Company announcements</li>
+            <li>Hiring signals</li>
+            <li>Business events (e.g., funding, expansion)</li>
+            <li>Public professional data</li>
+          </ul>
+          <p>This data is used to generate insights and predictions and is not tied to individual users unless explicitly provided.</p>
+        </div>
+
+        <div class="policy-section">
+          <h2>3. How We Use Your Information</h2>
+          <p>We use your data to:</p>
+          <ul>
+            <li>Create and manage your account</li>
+            <li>Analyze your professional profile</li>
+            <li>Generate opportunity predictions</li>
+            <li>Provide personalized recommendations</li>
+            <li>Improve platform accuracy</li>
+            <li>Deliver insights and guidance</li>
+            <li>Communicate updates and notifications</li>
+            <li>Ensure platform security and integrity</li>
+          </ul>
+        </div>
+
+        <div class="policy-section">
+          <h2>4. AI and Automated Processing</h2>
+          <p>PLASSX uses algorithmic systems and artificial intelligence to:</p>
+          <ul>
+            <li>Analyze user profiles</li>
+            <li>Detect market signals</li>
+            <li>Estimate hiring probabilities</li>
+            <li>Generate recommendations and guidance</li>
+          </ul>
+          <p>These outputs are predictive and informational, not guaranteed outcomes.</p>
+        </div>
+
+        <div class="policy-section">
+          <h2>5. Data Storage and Security</h2>
+          <p>We implement industry-standard security measures, including:</p>
+          <ul>
+            <li>Encrypted data transmission (HTTPS)</li>
+            <li>Secure data storage systems</li>
+            <li>Access control and authentication</li>
+            <li>Monitoring for unauthorized access</li>
+          </ul>
+          <p>However, no system is completely secure, and we cannot guarantee absolute security.</p>
+        </div>
+
+        <div class="policy-section">
+          <h2>6. Data Sharing</h2>
+          <p>We do not sell your personal data.</p>
+          <p>We may share data with:</p>
+          <ul>
+            <li>Service providers (hosting, analytics, infrastructure)</li>
+            <li>AI providers (for processing and generation tasks)</li>
+            <li>Legal authorities when required by law</li>
+          </ul>
+          <p>All partners are expected to handle data securely and in compliance with applicable regulations.</p>
+        </div>
+
+        <div class="policy-section">
+          <h2>7. Data Retention</h2>
+          <p>We retain your data only as long as necessary to:</p>
+          <ul>
+            <li>Provide services</li>
+            <li>Maintain account functionality</li>
+            <li>Comply with legal obligations</li>
+          </ul>
+          <p>You may request deletion of your data at any time.</p>
+        </div>
+
+        <div class="policy-section">
+          <h2>8. Your Rights</h2>
+          <p>Depending on your jurisdiction, you may have the right to:</p>
+          <ul>
+            <li>Access your data</li>
+            <li>Correct inaccurate data</li>
+            <li>Request deletion</li>
+            <li>Restrict processing</li>
+            <li>Object to certain uses</li>
+            <li>Request data portability</li>
+          </ul>
+          <p class="contact-line">To exercise these rights, contact us at: privacy@plassx.com</p>
+        </div>
+
+        <div class="policy-section">
+          <h2>9. Cookies and Tracking</h2>
+          <p>PLASSX may use cookies and similar technologies to:</p>
+          <ul>
+            <li>Improve user experience</li>
+            <li>Analyze usage patterns</li>
+            <li>Maintain session state</li>
+          </ul>
+          <p>You can control cookies through your browser settings.</p>
+        </div>
+
+        <div class="policy-section">
+          <h2>10. Third-Party Services</h2>
+          <p>Our platform may integrate with third-party tools and services. We are not responsible for their privacy practices.</p>
+        </div>
+
+        <div class="policy-section">
+          <h2>11. Children’s Privacy</h2>
+          <p>PLASSX is not intended for individuals under the age of 18. We do not knowingly collect data from minors.</p>
+        </div>
+
+        <div class="policy-section">
+          <h2>12. Changes to This Policy</h2>
+          <p>We may update this Privacy Policy from time to time. Users will be notified of significant changes where appropriate.</p>
+        </div>
+
+        <div class="policy-section">
+          <h2>13. Contact</h2>
+          <p class="contact-line">For any questions regarding this Privacy Policy:</p>
+          <p class="contact-line">Email: privacy@plassx.com</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/img/plassx-logo.png" alt="PLASSX logo">
+          <div class="footer-note">Predictive career intelligence</div>
+        </div>
+        <div class="footer-meta">
+          <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-conditions.html">Terms &amp; Conditions</a>
+          </div>
+          <a class="footer-social" href="https://www.linkedin.com/company/plassx" target="_blank" rel="noopener noreferrer" aria-label="PLASSX on LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4.98 3.5A2.48 2.48 0 1 0 5 8.46 2.48 2.48 0 0 0 4.98 3.5ZM3 9.5h4v11H3Zm7 0h3.83V11h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.09v5.46h-4v-4.84c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.85 1.25-1.85 2.55v4.92h-4Z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 PLASSX. All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>
