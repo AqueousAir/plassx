@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PLASSX — Coming Soon</title>
+<title>PLASSX — AI Visibility Engine for Businesses</title>
+<meta name="description" content="PLASSX helps businesses become discoverable, understood, and recommended by AI systems when users ask where to go, buy, stay, book, or choose a service.">
 <link rel="icon" type="image/png" href="assets/images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -451,7 +452,8 @@ section { position: relative; z-index: 1; }
 }
 
 /* ── Problem section ── */
-#problem {
+#problem,
+#what-is {
   padding: 120px 48px;
   background: var(--off-white);
   border-top: 1px solid var(--border);
@@ -658,7 +660,9 @@ section { position: relative; z-index: 1; }
 }
 
 /* ── What you get ── */
-#deliverables {
+#audiences,
+#use-cases,
+#faq {
   padding: 120px 48px;
   background: #FFFFFF;
 }
@@ -720,150 +724,10 @@ section { position: relative; z-index: 1; }
   font-weight: 300;
 }
 
-/* ── Pricing ── */
-#pricing {
-  padding: 120px 48px;
-  background: var(--off-white);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-.pricing-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.pricing-heading {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(36px, 4vw, 52px);
-  font-weight: 300;
-  margin-bottom: 16px;
-}
-.pricing-heading em { font-style: italic; color: var(--accent-light); }
-.pricing-sub {
-  font-size: 16px;
-  color: var(--muted);
-  font-weight: 300;
-  margin-bottom: 64px;
-  max-width: 480px;
-  line-height: 1.7;
-}
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-.pricing-card {
-  background: #FFFFFF;
-  border: 1px solid rgba(15,23,42,0.08);
-  border-radius: 22px;
-  padding: 40px 36px;
-  position: relative;
-  transition: border-color 0.3s, transform 0.3s;
-  box-shadow: var(--shadow-card);
-}
-.pricing-card:hover { border-color: rgba(37,99,235,0.28); transform: translateY(-4px); }
-.pricing-card.featured {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F5F9FF 100%);
-  border-color: var(--accent);
-}
-.pricing-card.featured::before {
-  content: 'MOST POPULAR';
-  position: absolute;
-  top: -1px; left: 50%;
-  transform: translateX(-50%);
-  background: var(--accent);
-  color: #FFFFFF;
-  font-family: 'DM Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.15em;
-  padding: 5px 14px;
-  border-radius: 0 0 3px 3px;
-}
-.plan-name {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 20px;
-}
-.plan-price {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 52px;
-  font-weight: 300;
-  color: var(--white);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-.plan-period {
-  font-size: 13px;
-  color: var(--muted);
-  margin-bottom: 28px;
-}
-.plan-divider {
-  height: 1px;
-  background: var(--border);
-  margin-bottom: 28px;
-}
-.plan-features {
-  list-style: none;
-  margin-bottom: 36px;
-}
-.plan-features li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 13px;
-  color: rgba(15,23,42,0.62);
-  line-height: 1.6;
-  margin-bottom: 12px;
-  font-weight: 300;
-}
-.plan-features li::before {
-  content: '→';
-  color: var(--accent);
-  font-size: 12px;
-  margin-top: 1px;
-  flex-shrink: 0;
-}
-.plan-btn {
-  display: block;
-  text-align: center;
-  padding: 14px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 500;
-  text-decoration: none;
-  letter-spacing: 0.05em;
-  transition: all 0.2s;
-  cursor: pointer;
-}
-.plan-btn-outline {
-  border: 1px solid rgba(15,23,42,0.1);
-  color: var(--muted);
-}
-.plan-btn-outline:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-.plan-btn-solid {
-  background: var(--accent);
-  color: #FFFFFF;
-  border: 1px solid var(--accent);
-}
-.plan-btn-solid:hover {
-  background: var(--accent-light);
-}
-.pricing-guarantee {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 13px;
-  color: var(--muted);
-  font-weight: 300;
-  font-style: italic;
-}
-
 /* ── Why now ── */
-#why {
+#why,
+#why-ai-visibility,
+#difference {
   padding: 120px 48px;
   background: #FFFFFF;
 }
@@ -927,6 +791,32 @@ section { position: relative; z-index: 1; }
 }
 .why-point-body {
   font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+  font-weight: 300;
+}
+.faq-list {
+  max-width: 920px;
+  margin: 56px auto 0;
+  display: grid;
+  gap: 12px;
+}
+.faq-item {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px 32px;
+  text-align: left;
+  box-shadow: var(--shadow-soft);
+}
+.faq-question {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.faq-answer {
+  font-size: 15px;
   color: var(--muted);
   line-height: 1.7;
   font-weight: 300;
@@ -1092,7 +982,6 @@ footer {
   .problem-grid { grid-template-columns: 1fr; gap: 48px; }
   .process-steps { grid-template-columns: repeat(2, 1fr); }
   .deliverables-grid { grid-template-columns: repeat(2, 1fr); }
-  .pricing-grid { grid-template-columns: 1fr; gap: 12px; }
   .why-inner { grid-template-columns: 1fr; gap: 48px; }
   .stats-grid { grid-template-columns: 1fr; }
 }
@@ -1123,6 +1012,78 @@ footer {
       gtag("js", new Date());
       gtag("config", "G-82MYPRK7E1");
     </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://plassx.com/#organization",
+            "name": "PLASSX",
+            "url": "https://plassx.com/",
+            "logo": "https://plassx.com/assets/images/plassx-logo.png",
+            "description": "PLASSX helps businesses become discoverable, understood, and recommended by AI systems."
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://plassx.com/#software",
+            "name": "PLASSX",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web",
+            "description": "An AI visibility engine for businesses that need to be discovered, understood, and recommended by AI systems such as ChatGPT, Google Gemini, and Perplexity.",
+            "publisher": {
+              "@id": "https://plassx.com/#organization"
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://plassx.com/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is AI visibility?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "AI visibility refers to whether a business is recognized, understood, and recommended by AI systems when users ask for suggestions."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do businesses appear in ChatGPT or other AI answers?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Businesses are more likely to appear when AI systems can clearly understand their category, relevance, strengths, location, and credibility from available online signals."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can PLASSX guarantee that a business will appear in AI recommendations?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. AI systems are probabilistic and controlled by third-party platforms. PLASSX improves the likelihood of being recommended by strengthening the signals AI systems rely on."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What does PLASSX optimize?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "PLASSX provides recommendations to improve website content structure, business listings, semantic clarity, positioning, and AI-readable data."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is PLASSX replacing SEO?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. PLASSX complements SEO but focuses specifically on AI-generated answers and recommendation visibility rather than traditional search engine rankings."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
 </head>
 <body>
 
@@ -1135,9 +1096,11 @@ footer {
     <img src="assets/images/plassx-logo.png" alt="PLASSX">
   </a>
   <ul class="nav-links">
+    <li><a href="#what-is">What Is PLASSX</a></li>
     <li><a href="#problem">The Problem</a></li>
     <li><a href="#how">How It Works</a></li>
-    <li><a href="#deliverables">What You Get</a></li>
+    <li><a href="#use-cases">Use Cases</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#cta" class="nav-cta">Join the Whitelist →</a></li>
   </ul>
 </nav>
@@ -1150,19 +1113,17 @@ footer {
 
   <div class="hero-badge">
     <span class="hero-badge-dot"></span>
-    AI Visibility Engine for Modern Brands · Coming Soon
+    AI Visibility Engine
   </div>
 
   <h1 class="hero-headline">
-    Your business is <em>invisible</em><br>
-    to the new<br>
-    <span class="underline-gold">discovery layer.</span>
+    Get Your Business<br>
+    <em>Recommended</em><br>
+    <span class="underline-gold">by AI.</span>
   </h1>
 
   <p class="hero-sub">
-    "Millions of people are asking AI where to go, eat, stay, and buy...<br>
-Is your business in the answer?"
-    PLASSX does — and fixes it.
+    PLASSX helps businesses become discoverable, understood, and selected by AI systems when users ask where to go, buy, stay, book, or choose a service.
   </p>
 
   <div class="hero-actions">
@@ -1182,23 +1143,23 @@ Is your business in the answer?"
         <div class="ai-window-dot" style="background:#FF5F57"></div>
         <div class="ai-window-dot" style="background:#FEBC2E"></div>
         <div class="ai-window-dot" style="background:#28C840"></div>
-        <span class="ai-window-title">ChatGPT — Buyer query</span>
+        <span class="ai-window-title">AI assistant — Recommendation query</span>
       </div>
       <div class="ai-window-body">
         <div class="ai-query-label">User asked:</div>
-        <div class="ai-query-text">"Best interior design studio in Dubai for a luxury villa renovation?"</div>
+        <div class="ai-query-text">"Which business should I choose near me?"</div>
         <div class="ai-response-label">AI recommended:</div>
         <div class="ai-hotel-result visible">
           <span class="ai-result-num">01</span>
-          Atelier Noor Design
+          Clear category match
         </div>
         <div class="ai-hotel-result visible">
           <span class="ai-result-num">02</span>
-          Maison Form Studio
+          Strong local relevance
         </div>
         <div class="ai-hotel-result visible">
           <span class="ai-result-num">03</span>
-          Meridian Interiors
+          Trusted service option
         </div>
         <div class="ai-hotel-result missing">
           <span class="ai-result-num gray">—</span>
@@ -1206,7 +1167,7 @@ Is your business in the answer?"
           <span class="missing-label">not mentioned</span>
         </div>
       </div>
-      <div class="ai-window-footer">⚠ 0 of 50 queries returned your business</div>
+      <div class="ai-window-footer">AI visibility depends on clear, structured business signals</div>
     </div>
   </div>
 
@@ -1217,77 +1178,94 @@ Is your business in the answer?"
 
   <div class="hero-stats">
     <div class="hero-stat">
-      <div class="hero-stat-num">72%</div>
-      <div class="hero-stat-label">of buyers now use AI to research products and services</div>
+      <div class="hero-stat-num">Hotels</div>
+      <div class="hero-stat-label">Appear when travelers ask where to stay</div>
     </div>
     <div class="hero-stat">
-      <div class="hero-stat-num">3</div>
-      <div class="hero-stat-label">brands recommended per AI query — average</div>
+      <div class="hero-stat-num">Healthcare</div>
+      <div class="hero-stat-label">Be understood when patients compare providers</div>
     </div>
     <div class="hero-stat">
-      <div class="hero-stat-num">0%</div>
-      <div class="hero-stat-label">of businesses have a defined AI visibility strategy</div>
+      <div class="hero-stat-num">Services</div>
+      <div class="hero-stat-label">Compete when customers ask who to choose</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS PLASSX -->
+<section id="what-is">
+  <div class="problem-grid">
+    <div class="reveal">
+      <div class="section-tag">What is PLASSX?</div>
+      <h2 class="problem-heading">
+        An AI visibility engine<br>
+        for the new <em>discovery layer.</em>
+      </h2>
+      <p class="problem-body">
+        PLASSX is an AI visibility engine that ensures businesses are clearly understood and recommended inside AI-generated answers.
+      </p>
+      <p class="problem-body">
+        As discovery shifts from search engines to AI assistants, platforms like ChatGPT, Google Gemini, and Perplexity no longer show users endless lists of results. They select a small number of businesses to recommend.
+      </p>
+      <div class="problem-pull">
+        If a business is not selected, it becomes invisible at the moment of decision.
+      </div>
+      <p class="problem-body">
+        PLASSX analyzes how AI systems interpret a business and identifies what must be improved to increase its likelihood of being included in AI-generated recommendations.
+      </p>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <div class="shift-cards">
+        <div class="shift-card then">
+          <div class="shift-era">Traditional search</div>
+          <div class="shift-title">Users browse, compare, and choose.</div>
+          <div class="shift-desc">Businesses compete across search results, maps, directories, websites, reviews, and listings. The user still does much of the filtering.</div>
+        </div>
+        <div class="shift-card now">
+          <div class="shift-era">AI discovery</div>
+          <div class="shift-title">AI systems interpret, filter, and recommend.</div>
+          <div class="shift-desc">AI assistants synthesize available signals and present a smaller set of options. The businesses they understand best have a stronger chance of being selected.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- PROBLEM -->
 <section id="problem">
-  <div class="problem-grid">
-    <div class="reveal">
-      <div class="section-tag">The challenge</div>
-      <h2 class="problem-heading">
-        Discovery has shifted.<br>
-        Most businesses haven't <em>noticed yet.</em>
-      </h2>
-      <p class="problem-body">
-        For years, digital discovery followed a familiar pattern. Buyers searched Google, compared websites, browsed marketplaces, and reviewed options. Brands competed for rankings, reviews, ads, and conversion. The game was visible and the rules were clear.
-      </p>
-      <div class="problem-pull">
-        "If AI doesn't understand your business, your business doesn't exist in the moments that increasingly shape buyer choice."
-      </div>
-      <p class="problem-body">
-        That model is changing. People increasingly open ChatGPT, Gemini, or a voice assistant and ask a simple question. The AI responds with two or three names — confidently, specifically, with no page two. Every business not named is invisible. Not ranked lower. Simply absent.
-      </p>
-    </div>
-    <div class="reveal reveal-delay-2">
-      <div class="shift-cards">
-        <div class="shift-card then">
-          <div class="shift-era">Then — Search & marketplaces</div>
-          <div class="shift-title">Pages of results. Dozens of options.</div>
-          <div class="shift-desc">Buyers compared, scrolled, and chose from a wide competitive set. Strong SEO, media spend, and marketplace presence kept you visible. The playing field was large.</div>
-        </div>
-        <div class="shift-card now">
-          <div class="shift-era">Now — AI recommendations</div>
-          <div class="shift-title">Two or three names. That's it.</div>
-          <div class="shift-desc">AI systems select a handful of businesses they understand well. Brands without structured AI presence aren't ranked lower — they're not considered at all. The playing field just got very small.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section id="stats">
   <div class="stats-inner">
-    <div class="section-tag reveal">The reality</div>
+    <div class="section-tag reveal">The problem</div>
     <h2 class="problem-heading reveal" style="max-width:700px;margin-bottom:0;font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,52px);font-weight:300;line-height:1.15;">
-      The numbers your leadership team<br><em>needs to see</em>
+      AI does not show<br><em>hundreds of options.</em>
     </h2>
+    <p class="deliverables-sub reveal" style="margin-top:28px;">Millions of users now ask AI questions such as:</p>
     <div class="stats-grid">
       <div class="stat-card reveal">
-        <div class="stat-number">72<span>%</span></div>
-        <div class="stat-text">of decision-makers now use AI assistants to research products, vendors, and service providers before making a shortlist.</div>
+        <div class="stat-number">Stay</div>
+        <div class="stat-text">Where should I stay?</div>
       </div>
       <div class="stat-card reveal reveal-delay-2">
-        <div class="stat-number">2–<span>3</span></div>
-        <div class="stat-text">brands commonly returned per AI recommendation query. If your business is not one of them, you are not part of that buyer's consideration set.</div>
+        <div class="stat-number">Eat</div>
+        <div class="stat-text">What is the best restaurant near me?</div>
       </div>
       <div class="stat-card reveal reveal-delay-3">
-        <div class="stat-number">0<span>%</span></div>
-        <div class="stat-text">of businesses currently have a structured AI visibility strategy. This remains one of the widest uncontested gaps in modern digital discovery.</div>
+        <div class="stat-number">Choose</div>
+        <div class="stat-text">Which clinic should I choose?</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-1">
+        <div class="stat-number">Book</div>
+        <div class="stat-text">Who is the best service provider in this area?</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-2">
+        <div class="stat-number">Buy</div>
+        <div class="stat-text">Where can I buy this nearby?</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-3">
+        <div class="stat-number">Compare</div>
+        <div class="stat-text">Which option is best for my needs?</div>
       </div>
     </div>
+    <p class="deliverables-sub reveal" style="margin-top:36px;">AI selects a few. Most businesses are not excluded because they are bad. They are excluded because their online presence is not structured clearly enough for AI systems to understand, compare, and recommend them.</p>
   </div>
 </section>
 
@@ -1296,140 +1274,131 @@ Is your business in the answer?"
   <div class="how-inner">
     <div class="section-tag reveal">The process</div>
     <h2 class="how-heading reveal">
-      Four steps from<br><em>invisible to recommended</em>
+      How PLASSX<br><em>works</em>
     </h2>
     <div class="process-steps">
       <div class="process-step reveal">
         <div class="process-step-num">01</div>
-        <div class="process-step-title">AI Audit</div>
-        <div class="process-step-body">We run your business through 50 real buyer queries across ChatGPT, Gemini, and Perplexity. You see exactly where you appear, what is said, and where competitors outrank you.</div>
+        <div class="process-step-title">AI Perception Analysis</div>
+        <div class="process-step-body">PLASSX analyzes how AI systems currently understand the business, including category, positioning, audience, strengths, and competitor context.</div>
       </div>
       <div class="process-step reveal reveal-delay-1">
         <div class="process-step-num">02</div>
-        <div class="process-step-title">Gap Analysis</div>
-        <div class="process-step-body">We identify every gap between how AI systems describe your business and how you actually want to be positioned. Errors, omissions, and misrepresentations are surfaced and prioritised.</div>
+        <div class="process-step-title">Query Simulation</div>
+        <div class="process-step-body">PLASSX tests real AI-style user queries to see whether the business appears in relevant scenarios, such as best boutique hotel in Dubai Marina, family-friendly clinic near me, top restaurant for dinner tonight, or best service provider in my area.</div>
       </div>
       <div class="process-step reveal reveal-delay-2">
         <div class="process-step-num">03</div>
-        <div class="process-step-title">Optimisation</div>
-        <div class="process-step-body">We generate an AI-ready content layer — company descriptions, structured data, FAQ sets, and schema markup — built specifically for how AI systems read and recommend businesses.</div>
+        <div class="process-step-title">Visibility Gap Detection</div>
+        <div class="process-step-body">PLASSX identifies where the business is missing, which competitors dominate, and what signals are weak, incomplete, or unclear.</div>
       </div>
       <div class="process-step reveal reveal-delay-3">
         <div class="process-step-num">04</div>
-        <div class="process-step-title">Monitor & Grow</div>
-        <div class="process-step-body">AI visibility changes. We track your score monthly, alert you to shifts, and refresh your content as AI platforms update — so your position compounds over time.</div>
+        <div class="process-step-title">AI Optimization Recommendations</div>
+        <div class="process-step-body">PLASSX generates precise recommendations to improve website structure, business listings, content clarity, semantic signals, and AI-readable data.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- DELIVERABLES -->
-<section id="deliverables">
+<!-- WHO IT IS FOR -->
+<section id="audiences">
   <div class="deliverables-inner">
-    <div class="section-tag reveal">What your business receives</div>
+    <div class="section-tag reveal">Who PLASSX is for</div>
     <h2 class="deliverables-heading reveal">
-      Tangible deliverables.<br><em>Measurable outcomes.</em>
+      Built for businesses<br><em>that need to be selected.</em>
     </h2>
-    <p class="deliverables-sub reveal">Every engagement produces concrete assets your team can implement and results your leadership team can act on.</p>
+    <p class="deliverables-sub reveal">PLASSX is built for businesses that depend on being discovered and selected. If your customers search, ask, compare, or rely on recommendations, PLASSX is relevant.</p>
     <div class="deliverables-grid">
       <div class="deliverable-card reveal">
         <div class="deliverable-icon">◎</div>
-        <div class="deliverable-title">AI Visibility Score</div>
-        <div class="deliverable-body">A baseline score — 0 to 100 — measuring your current AI presence across leading platforms, benchmarked against your direct competitors in the same category.</div>
+        <div class="deliverable-title">Hotels</div>
+        <div class="deliverable-body">For properties that need to appear when travelers ask where to stay in a city, district, budget range, or travel context.</div>
       </div>
       <div class="deliverable-card reveal reveal-delay-1">
         <div class="deliverable-icon">◈</div>
-        <div class="deliverable-title">Full Audit Report</div>
-        <div class="deliverable-body">A detailed breakdown of how AI systems currently describe, position, and recommend your business — including every error, gap, and misrepresentation identified.</div>
+        <div class="deliverable-title">Healthcare Providers</div>
+        <div class="deliverable-body">For clinics, dentists, doctors, and medical services that need to be clearly understood when patients compare care options.</div>
       </div>
       <div class="deliverable-card reveal reveal-delay-2">
         <div class="deliverable-icon">◆</div>
-        <div class="deliverable-title">Content Package</div>
-        <div class="deliverable-body">AI-ready business descriptions, attribute sets, FAQ content, and JSON-LD structured data — formatted precisely for how AI systems consume and recommend business information.</div>
+        <div class="deliverable-title">Restaurants</div>
+        <div class="deliverable-body">For restaurants that want to be discoverable when users ask where to eat, what to try, or which venue fits a specific occasion.</div>
       </div>
       <div class="deliverable-card reveal reveal-delay-1">
         <div class="deliverable-icon">◉</div>
-        <div class="deliverable-title">Query Coverage Map</div>
-        <div class="deliverable-body">A map of which buyer AI queries your business currently appears in — and which high-value queries your competitors are winning that you are not.</div>
+        <div class="deliverable-title">Professional Services</div>
+        <div class="deliverable-body">For legal, consulting, accounting, real estate, maintenance, and business services where trust and fit shape selection.</div>
       </div>
       <div class="deliverable-card reveal reveal-delay-2">
         <div class="deliverable-icon">◐</div>
-        <div class="deliverable-title">Monthly Report</div>
-        <div class="deliverable-body">Ongoing monitoring with monthly score updates, movement tracking, and recommended actions. Clear enough for your team to use in leadership reviews and planning.</div>
+        <div class="deliverable-title">Retail Businesses</div>
+        <div class="deliverable-body">For local and category-specific retailers that need to appear when users ask where to buy or which store to visit.</div>
       </div>
       <div class="deliverable-card reveal reveal-delay-3">
         <div class="deliverable-icon">◑</div>
-        <div class="deliverable-title">Visibility Strategist</div>
-        <div class="deliverable-body">A dedicated PLASSX expert who understands your business, your market, and your competitive set — available for monthly strategy calls on Pro and Portfolio plans.</div>
+        <div class="deliverable-title">Local Service Businesses</div>
+        <div class="deliverable-body">For providers such as salons, wellness studios, repair companies, and local operators that depend on recommendation-driven discovery.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
-<section id="pricing" hidden>
-  <div class="pricing-inner">
-    <div class="section-tag reveal">Investment</div>
-    <h2 class="pricing-heading reveal">Straightforward pricing.<br><em>No surprises.</em></h2>
-    <p class="pricing-sub reveal">One additional qualified customer per month can justify Starter. The upside from being recommended earlier in the buying journey compounds quickly.</p>
-    <div class="pricing-grid">
-      <div class="pricing-card reveal">
-        <div class="plan-name">Visibility Starter</div>
-        <div class="plan-price">$299</div>
-        <div class="plan-period">per month · single business</div>
-        <div class="plan-divider"></div>
-        <ul class="plan-features">
-          <li>Full AI Visibility Score + audit report</li>
-          <li>AI-optimised content package</li>
-          <li>50-query coverage across ChatGPT, Gemini & Perplexity</li>
-          <li>Monthly monitoring & progress report</li>
-          <li>Email support</li>
-        </ul>
-        <a href="#cta" class="plan-btn plan-btn-outline">Get started →</a>
+<!-- USE CASES -->
+<section id="use-cases">
+  <div class="deliverables-inner">
+    <div class="section-tag reveal">Use cases</div>
+    <h2 class="deliverables-heading reveal">
+      Where AI visibility<br><em>changes the shortlist.</em>
+    </h2>
+    <div class="deliverables-grid">
+      <div class="deliverable-card reveal">
+        <div class="deliverable-icon">01</div>
+        <div class="deliverable-title">Hotels</div>
+        <div class="deliverable-body">Appear when users ask where to stay in a specific city, district, or travel context.</div>
       </div>
-      <div class="pricing-card featured reveal reveal-delay-1">
-        <div class="plan-name">Visibility Pro</div>
-        <div class="plan-price">$599</div>
-        <div class="plan-period">per month · single business</div>
-        <div class="plan-divider"></div>
-        <ul class="plan-features">
-          <li>Everything in Starter</li>
-          <li>Competitive benchmarking across your category</li>
-          <li>Dedicated visibility strategist · monthly strategy call</li>
-          <li>Quarterly content refresh as AI platforms update</li>
-          <li>Priority support</li>
-        </ul>
-        <a href="#cta" class="plan-btn plan-btn-solid">Get started →</a>
+      <div class="deliverable-card reveal reveal-delay-1">
+        <div class="deliverable-icon">02</div>
+        <div class="deliverable-title">Healthcare Providers</div>
+        <div class="deliverable-body">Improve visibility when users ask which clinic, dentist, doctor, or medical service to choose.</div>
       </div>
-      <div class="pricing-card reveal reveal-delay-2">
-        <div class="plan-name">Portfolio</div>
-        <div class="plan-price" style="font-size:36px;padding-top:8px;">Custom</div>
-        <div class="plan-period">per month · multi-location brands</div>
-        <div class="plan-divider"></div>
-        <ul class="plan-features">
-          <li>All Pro features across every business unit</li>
-          <li>Consolidated multi-location AI visibility dashboard</li>
-          <li>Portfolio-level competitive benchmarking</li>
-          <li>Quarterly executive business reviews</li>
-          <li>Annual contract preferred · volume pricing</li>
-        </ul>
-        <a href="#cta" class="plan-btn plan-btn-outline">Request a proposal →</a>
+      <div class="deliverable-card reveal reveal-delay-2">
+        <div class="deliverable-icon">03</div>
+        <div class="deliverable-title">Restaurants</div>
+        <div class="deliverable-body">Increase discoverability when users ask where to eat, what to try, or which restaurant fits a specific occasion.</div>
+      </div>
+      <div class="deliverable-card reveal reveal-delay-1">
+        <div class="deliverable-icon">04</div>
+        <div class="deliverable-title">Professional Services</div>
+        <div class="deliverable-body">Get positioned for AI-driven recommendations around legal, consulting, accounting, real estate, maintenance, or business services.</div>
+      </div>
+      <div class="deliverable-card reveal reveal-delay-2">
+        <div class="deliverable-icon">05</div>
+        <div class="deliverable-title">Retail Businesses</div>
+        <div class="deliverable-body">Improve visibility when users ask where to buy, what store to visit, or which local provider to choose.</div>
+      </div>
+      <div class="deliverable-card reveal reveal-delay-3">
+        <div class="deliverable-icon">06</div>
+        <div class="deliverable-title">Local Service Businesses</div>
+        <div class="deliverable-body">Strengthen discovery when users ask which nearby provider is trusted, available, relevant, or best suited to their request.</div>
       </div>
     </div>
-    <p class="pricing-guarantee reveal">All plans include a 30-day AI Visibility Score improvement guarantee — backed by confidence in the results, not a safety net.</p>
   </div>
 </section>
 
-<!-- WHY NOW -->
-<section id="why">
+<!-- WHY AI VISIBILITY MATTERS -->
+<section id="why-ai-visibility">
   <div class="why-inner">
     <div>
-      <div class="section-tag reveal">Why act now</div>
+      <div class="section-tag reveal">Why AI visibility matters</div>
       <h2 class="why-heading reveal">
-        The window to<br>lead your market<br>is <em>open today.</em>
+        Search behavior<br>is <em>changing.</em>
       </h2>
       <p class="why-body reveal">
-        AI visibility is one of the widest uncontested gaps in digital growth right now. Most competitors have not moved. The businesses that establish a strong AI presence in the next twelve months will be the default recommendations as AI adoption accelerates. Early presence compounds and late entry becomes harder to overcome.
+        Users are no longer only browsing links, maps, or directories. They are asking AI systems for direct recommendations and acting on the answers.
+      </p>
+      <p class="why-body reveal" style="margin-top:18px;">
+        This creates a new visibility reality: fewer businesses are shown, competition is compressed, recommendation slots become more valuable, and structured, AI-readable businesses gain an advantage.
       </p>
     </div>
     <div class="why-points reveal reveal-delay-2">
@@ -1438,8 +1407,8 @@ Is your business in the answer?"
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div>
-          <div class="why-point-title">AI models are forming opinions today</div>
-          <div class="why-point-body">ChatGPT and Gemini are already recommending businesses, products, and service providers. The profiles they build now become the baseline they draw from as adoption grows. Waiting is not neutral — it means falling further behind.</div>
+          <div class="why-point-title">Fewer businesses are shown</div>
+          <div class="why-point-body">AI answers tend to compress discovery into a smaller set of suggested options rather than pages of results.</div>
         </div>
       </div>
       <div class="why-point">
@@ -1447,8 +1416,8 @@ Is your business in the answer?"
           <svg viewBox="0 0 24 24" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3" stroke-linecap="round"/></svg>
         </div>
         <div>
-          <div class="why-point-title">Traditional SEO does not transfer</div>
-          <div class="why-point-body">AI systems do not simply mirror Google rankings. They synthesise from structured data, content quality, and signals most businesses have never optimised. Your current digital investment does not automatically protect you here.</div>
+          <div class="why-point-title">Competition is compressed</div>
+          <div class="why-point-body">When users ask AI for a recommendation, being clearly understood can matter as much as being available online.</div>
         </div>
       </div>
       <div class="why-point">
@@ -1456,8 +1425,8 @@ Is your business in the answer?"
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div>
-          <div class="why-point-title">Your category is not ready</div>
-          <div class="why-point-body">Very few businesses in your category have an active AI visibility strategy. Moving now means owning a channel before your market catches up — a first-mover advantage that is genuinely rare.</div>
+          <div class="why-point-title">Recommendation slots become more valuable</div>
+          <div class="why-point-body">Being included in the answer can influence customer choice earlier than a website visit, directory click, or ad impression.</div>
         </div>
       </div>
       <div class="why-point">
@@ -1465,9 +1434,94 @@ Is your business in the answer?"
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div>
-          <div class="why-point-title">Better discovery. Better economics.</div>
-          <div class="why-point-body">AI-driven discovery can route qualified buyers directly to your business — reducing dependency on expensive intermediaries and improving the economics of acquisition. The ROI argument is straightforward.</div>
+          <div class="why-point-title">AI-readable businesses gain an advantage</div>
+          <div class="why-point-body">PLASSX helps businesses compete inside this new discovery layer by improving the signals AI systems rely on.</div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT MAKES PLASSX DIFFERENT -->
+<section id="difference">
+  <div class="why-inner">
+    <div>
+      <div class="section-tag reveal">What makes PLASSX different</div>
+      <h2 class="why-heading reveal">
+        Built specifically<br>for <em>AI-driven discovery.</em>
+      </h2>
+      <p class="why-body reveal">
+        PLASSX is not a traditional SEO tool, marketing agency, or listing manager. It is built specifically for how AI systems interpret businesses and generate recommendations.
+      </p>
+    </div>
+    <div class="why-points reveal reveal-delay-2">
+      <div class="why-point">
+        <div class="why-point-marker">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="why-point-title">How AI understands a business</div>
+          <div class="why-point-body">PLASSX focuses on category clarity, positioning, relevance, strengths, and the signals AI systems can interpret.</div>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-marker">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M4 12h16M12 4v16" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="why-point-title">Whether the business appears in AI answers</div>
+          <div class="why-point-body">PLASSX tests recommendation scenarios to understand where a business is visible, missing, or misunderstood.</div>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-marker">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M5 19l14-14M7 7h.01M17 17h.01" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="why-point-title">Which signals influence recommendations</div>
+          <div class="why-point-body">PLASSX identifies the weak or unclear signals that can prevent AI systems from confidently recommending a business.</div>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-marker">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M4 16l6-6 4 4 6-8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <div class="why-point-title">What improves AI visibility over time</div>
+          <div class="why-point-body">PLASSX gives practical recommendations for content structure, listings, semantic clarity, positioning, and AI-readable data.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="deliverables-inner">
+    <div class="section-tag reveal">Frequently asked questions</div>
+    <h2 class="deliverables-heading reveal">
+      Frequently Asked<br><em>Questions</em>
+    </h2>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-question">What is AI visibility?</div>
+        <div class="faq-answer">AI visibility refers to whether a business is recognized, understood, and recommended by AI systems when users ask for suggestions.</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-1">
+        <div class="faq-question">How do businesses appear in ChatGPT or other AI answers?</div>
+        <div class="faq-answer">Businesses are more likely to appear when AI systems can clearly understand their category, relevance, strengths, location, and credibility from available online signals.</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-2">
+        <div class="faq-question">Can PLASSX guarantee that a business will appear in AI recommendations?</div>
+        <div class="faq-answer">No. AI systems are probabilistic and controlled by third-party platforms. PLASSX improves the likelihood of being recommended by strengthening the signals AI systems rely on.</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-1">
+        <div class="faq-question">What does PLASSX optimize?</div>
+        <div class="faq-answer">PLASSX provides recommendations to improve website content structure, business listings, semantic clarity, positioning, and AI-readable data.</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-2">
+        <div class="faq-question">Is PLASSX replacing SEO?</div>
+        <div class="faq-answer">No. PLASSX complements SEO but focuses specifically on AI-generated answers and recommendation visibility rather than traditional search engine rankings.</div>
       </div>
     </div>
   </div>
@@ -1476,19 +1530,17 @@ Is your business in the answer?"
 <!-- CTA -->
 <section id="cta">
   <div class="cta-tag reveal">Start here</div>
-  <p class="cta-note reveal">Coming soon · Join the whitelist for early access.
-</p>
   <h2 class="cta-heading reveal">
-    Be first in line<br>when PLASSX <em>launches.</em>
+    AI is becoming the front door<br>to <em>business discovery.</em>
   </h2>
   <p class="cta-body reveal">
-    PLASSX is getting ready to launch. Join the whitelist and we will let you know when early access opens for businesses ready to improve how AI systems see and recommend their brand.
+    Make sure your business is inside the answer.
   </p>
   <form class="whitelist-form reveal" id="whitelistForm">
     <input class="whitelist-input" type="text" name="name" autocomplete="name" placeholder="Your name" required>
     <input class="whitelist-input" type="email" name="email" autocomplete="email" placeholder="Email address" required>
     <button class="btn-primary whitelist-submit" type="submit" style="font-size:15px;padding:18px 40px;">
-      Join the Whitelist →
+      Join the PLASSX whitelist →
     </button>
     <p class="form-status" id="formStatus" aria-live="polite"></p>
   </form>
