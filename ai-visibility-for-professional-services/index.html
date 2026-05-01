@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Visibility for Professional Services | PLASSX</title>
+<meta name="description" content="Improve how your professional services business is understood and recommended by AI systems like ChatGPT and Google Gemini with PLASSX.">
+<link rel="canonical" href="https://plassx.com/ai-visibility-for-professional-services/">
+<link rel="icon" type="image/png" href="../assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #FFFFFF;
+  --navy-mid: #F7FAFE;
+  --accent: #2563EB;
+  --accent-light: #1D4ED8;
+  --white: #0F172A;
+  --off-white: #F8FAFC;
+  --muted: rgba(15,23,42,0.62);
+  --border: rgba(15,23,42,0.08);
+  --border-light: rgba(37,99,235,0.16);
+  --shadow-card: 0 14px 36px rgba(15,23,42,0.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.018;
+  pointer-events: none;
+  z-index: 0;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 24px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(15,23,42,0.04);
+  transition: all 0.4s ease;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(18px);
+}
+nav.scrolled {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom-color: var(--border);
+  padding: 16px 48px;
+}
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+.nav-logo img {
+  width: clamp(136px, 12vw, 170px);
+  height: auto;
+  display: block;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  font-size: 13px;
+  font-weight: 400;
+  color: #FFFFFF !important;
+  background: var(--accent);
+  padding: 10px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: all 0.2s !important;
+  box-shadow: 0 12px 30px rgba(37,99,235,0.18);
+}
+.nav-cta:hover { background: var(--accent-light) !important; color: #FFFFFF !important; transform: translateY(-1px); }
+.page-shell {
+  position: relative;
+  z-index: 1;
+  padding: 148px 48px 96px;
+  background:
+    radial-gradient(circle at top right, rgba(37,99,235,0.10), transparent 24%),
+    linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+}
+.page-grid { max-width: 1200px; margin: 0 auto; }
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 34px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(15,23,42,0.44);
+}
+.breadcrumb a { color: var(--accent-light); }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(37,99,235,0.16);
+  background: rgba(255,255,255,0.9);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 34px;
+}
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 6vw, 84px);
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-bottom: 22px;
+  max-width: 920px;
+}
+.page-title em { font-style: italic; color: var(--accent-light); }
+.page-intro {
+  max-width: 790px;
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 70px;
+}
+.content-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 34px;
+  box-shadow: var(--shadow-card);
+}
+.content-card.full { grid-column: 1 / -1; }
+.section-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-tag::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 3.2vw, 44px);
+  font-weight: 300;
+  line-height: 1.12;
+  margin-bottom: 22px;
+}
+.content-card p,
+.content-card li {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.75;
+  font-weight: 300;
+}
+.content-card ul {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+.content-card li {
+  position: relative;
+  padding-left: 24px;
+}
+.content-card li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+.cta-band {
+  margin-top: 18px;
+  background: linear-gradient(180deg, #F8FBFF 0%, #FFFFFF 100%);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 44px 34px;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+}
+.cta-band h2 { margin-bottom: 12px; }
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 26px;
+  color: #FFFFFF;
+  background: var(--accent);
+  padding: 16px 30px;
+  border-radius: 999px;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  box-shadow: 0 18px 40px rgba(37,99,235,0.20);
+  transition: transform 0.2s, background 0.2s;
+}
+.btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+.related-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+.related-links a {
+  border: 1px solid var(--border-light);
+  border-radius: 999px;
+  padding: 9px 14px;
+  color: var(--accent-light);
+  font-size: 13px;
+}
+footer {
+  background: #FFFFFF;
+  border-top: 1px solid var(--border);
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  color: rgba(15,23,42,0.52);
+  font-size: 13px;
+}
+.footer-logo img { width: 128px; height: auto; }
+.footer-links {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+.footer-links a:hover { color: var(--accent-light); }
+@media (max-width: 1024px) {
+  .content-grid { grid-template-columns: 1fr; }
+  .content-card.full { grid-column: auto; }
+}
+@media (max-width: 768px) {
+  nav { padding: 20px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+  .nav-links { display: none; }
+  .page-shell { padding: 120px 24px 72px; }
+  .content-card, .cta-band { padding: 28px 24px; }
+  footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://plassx.com/#organization",
+      "name": "PLASSX",
+      "url": "https://plassx.com/",
+      "logo": "https://plassx.com/assets/images/plassx-logo.png"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://plassx.com/ai-visibility-for-professional-services/#webpage",
+      "url": "https://plassx.com/ai-visibility-for-professional-services/",
+      "name": "AI Visibility for Professional Services | PLASSX",
+      "description": "Improve how your professional services business is understood and recommended by AI systems like ChatGPT and Google Gemini with PLASSX.",
+      "isPartOf": {
+        "@id": "https://plassx.com/#website"
+      },
+      "about": {
+        "@id": "https://plassx.com/#software"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://plassx.com/ai-visibility-for-professional-services/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://plassx.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AI Visibility",
+          "item": "https://plassx.com/#use-cases"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Professional Services",
+          "item": "https://plassx.com/ai-visibility-for-professional-services/"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://plassx.com/#software",
+      "name": "PLASSX",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "An AI visibility engine for businesses that need to be discovered, understood, and recommended by AI systems.",
+      "publisher": {
+        "@id": "https://plassx.com/#organization"
+      }
+    }
+  ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-82MYPRK7E1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-82MYPRK7E1");
+</script>
+</head>
+<body>
+<nav id="nav">
+  <a href="../index.html" class="nav-logo" aria-label="PLASSX home">
+    <img src="../assets/images/plassx-logo.png" alt="PLASSX">
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../index.html#what-is">What Is PLASSX</a></li>
+    <li><a href="../index.html#problem">The Problem</a></li>
+    <li><a href="../index.html#how">How It Works</a></li>
+    <li><a href="../index.html#use-cases">Use Cases</a></li>
+    <li><a href="../index.html#faq">FAQ</a></li>
+    <li><a href="../index.html#cta" class="nav-cta">Join the Whitelist →</a></li>
+  </ul>
+</nav>
+
+<main class="page-shell">
+  <div class="page-grid">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span>›</span>
+      <a href="../index.html#use-cases">AI Visibility</a>
+      <span>›</span>
+      <span>Professional Services</span>
+    </nav>
+
+    <header class="page-hero">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        AI Visibility for Professional Services
+      </div>
+      <h1 class="page-title">AI Visibility for <em>Professional Services</em></h1>
+      <p class="page-intro">
+        Users increasingly ask AI systems such as ChatGPT, Google Gemini, and Perplexity which professional services business to choose. Instead of browsing endless results, they receive a small set of recommendations. PLASSX helps professional services businesses improve how they are understood, compared, and considered by AI systems.
+      </p>
+    </header>
+
+    <article class="content-grid">
+      <section class="content-card">
+        <div class="section-tag">Search behavior</div>
+        <h2>How users search in this category</h2>
+        <ul>
+              <li>Best legal consultant near me</li>
+              <li>Top accounting firm for small businesses</li>
+              <li>Which service provider should I choose?</li>
+        </ul>
+      </section>
+
+      <section class="content-card">
+        <div class="section-tag">Visibility gaps</div>
+        <h2>Why Professional Services businesses are not showing in AI</h2>
+        <ul>
+              <li>Service categories are broad or unclear</li>
+              <li>Expertise and credibility signals are underdeveloped</li>
+              <li>Location and audience fit are not explicit</li>
+              <li>Competitors have clearer positioning</li>
+        </ul>
+      </section>
+
+      <section class="content-card">
+        <div class="section-tag">AI signals</div>
+        <h2>What AI systems need to understand</h2>
+        <ul>
+              <li>Service specialization</li>
+              <li>Client type and use case</li>
+              <li>Credentials and credibility</li>
+              <li>Location and availability</li>
+        </ul>
+      </section>
+
+      <section class="content-card">
+        <div class="section-tag">PLASSX method</div>
+        <h2>How PLASSX helps</h2>
+        <p>PLASSX analyzes how AI systems interpret your business and provides precise recommendations to improve structure, clarity, positioning, and AI-readable signals.</p>
+      </section>
+
+      <section class="content-card full">
+        <div class="section-tag">Explore more verticals</div>
+        <h2>Related AI visibility pages</h2>
+        <div class="related-links">
+          <a href="../ai-visibility-for-hotels/">Hotels</a>
+          <a href="../ai-visibility-for-healthcare/">Healthcare Providers</a>
+          <a href="../ai-visibility-for-restaurants/">Restaurants</a>
+          <a href="../ai-visibility-for-retail/">Retail Businesses</a>
+          <a href="../ai-visibility-for-local-services/">Local Services</a>
+          <a href="../ai-visibility-for-real-estate/">Real Estate</a>
+          <a href="../ai-visibility-for-saas/">SaaS / B2B</a>
+        </div>
+      </section>
+    </article>
+
+    <section class="cta-band" id="cta">
+      <h2>Be one of the businesses AI recommends.</h2>
+      <p class="page-intro" style="margin:0 auto;">Join the PLASSX whitelist for early access to AI visibility analysis and recommendations.</p>
+      <a href="../index.html#cta" class="btn-primary">Join the Whitelist <span>→</span></a>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-logo">
+    <img src="../assets/images/plassx-logo.png" alt="PLASSX">
+  </div>
+  <div>© 2026 PLASSX. AI Visibility Engine for Modern Brands.</div>
+  <div class="footer-links">
+    <a href="../privacy.html">Privacy</a>
+    <a href="../terms.html">Terms</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+</script>
+</body>
+</html>
