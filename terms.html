@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLASSX Terms of Use</title>
+<meta name="description" content="Read the PLASSX terms of use covering website access, informational content, sample materials, and permitted use of this site.">
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy: #FFFFFF;
+  --navy-mid: #F7FAFE;
+  --navy-light: #EDF3FB;
+  --blue: #1A4A8A;
+  --blue-mid: #2460B0;
+  --accent: #2563EB;
+  --accent-light: #1D4ED8;
+  --white: #0F172A;
+  --off-white: #F8FAFC;
+  --cream: #EEF2F7;
+  --muted: rgba(15,23,42,0.62);
+  --border: rgba(15,23,42,0.08);
+  --border-light: rgba(37,99,235,0.16);
+  --gold: #B88946;
+  --shadow-soft: 0 18px 50px rgba(15,23,42,0.06);
+  --shadow-card: 0 14px 36px rgba(15,23,42,0.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.018;
+  pointer-events: none;
+  z-index: 0;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 24px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(15,23,42,0.04);
+  transition: all 0.4s ease;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(18px);
+}
+
+nav.scrolled {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom-color: var(--border);
+  padding: 16px 48px;
+}
+
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.nav-logo img {
+  width: clamp(136px, 12vw, 170px);
+  height: auto;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta {
+  font-size: 13px;
+  font-weight: 400;
+  color: #FFFFFF !important;
+  background: var(--accent);
+  padding: 10px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: all 0.2s !important;
+  box-shadow: 0 12px 30px rgba(37,99,235,0.18);
+}
+
+.nav-cta:hover { background: var(--accent-light) !important; color: #FFFFFF !important; transform: translateY(-1px); }
+
+.page-shell {
+  position: relative;
+  z-index: 1;
+  padding: 148px 48px 96px;
+  background:
+    radial-gradient(circle at top right, rgba(37,99,235,0.10), transparent 24%),
+    linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+}
+
+.page-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(37,99,235,0.16);
+  background: rgba(255,255,255,0.9);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 34px;
+}
+
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.page-hero {
+  margin-bottom: 64px;
+}
+
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 6vw, 84px);
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-bottom: 22px;
+  max-width: 880px;
+}
+
+.page-title em {
+  font-style: italic;
+  color: var(--accent-light);
+}
+
+.page-intro {
+  max-width: 780px;
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.section-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-tag::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.legal-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 24px;
+}
+
+.legal-nav {
+  position: sticky;
+  top: 108px;
+  align-self: start;
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.legal-nav a {
+  display: block;
+  padding: 11px 0;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+
+.legal-nav a:hover { color: var(--accent-light); }
+
+.legal-content {
+  display: grid;
+  gap: 18px;
+}
+
+.legal-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 34px 34px 36px;
+  box-shadow: var(--shadow-card);
+}
+
+.legal-card h2,
+.legal-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  line-height: 1.05;
+  margin-bottom: 14px;
+}
+
+.legal-card h2 {
+  font-size: clamp(40px, 4vw, 54px);
+}
+
+.legal-card h3 {
+  font-size: 30px;
+}
+
+.legal-card p,
+.legal-card li {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+.legal-card ul {
+  list-style: none;
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.legal-card strong { color: var(--white); }
+
+footer {
+  background: #FFFFFF;
+  border-top: 1px solid var(--border);
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-logo img {
+  width: 128px;
+  height: auto;
+  display: block;
+}
+
+.footer-copy {
+  font-size: 12px;
+  color: rgba(15,23,42,0.34);
+  font-weight: 300;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-size: 12px;
+  color: rgba(15,23,42,0.38);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--muted); }
+
+@media (max-width: 1024px) {
+  .legal-layout { grid-template-columns: 1fr; }
+  .legal-nav { position: static; }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 20px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+  .nav-links { display: none; }
+  .page-shell { padding: 124px 24px 80px; }
+  .legal-card { padding: 28px 24px 30px; }
+  footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
+}
+</style>
+  <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-82MYPRK7E1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-82MYPRK7E1");
+    </script>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo" aria-label="PLASSX home">
+    <img src="assets/images/plassx-logo.png" alt="PLASSX">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#problem">The Problem</a></li>
+    <li><a href="index.html#how">How It Works</a></li>
+    <li><a href="index.html#deliverables">What You Get</a></li>
+    <li><a href="index.html#cta" class="nav-cta">Join the Whitelist →</a></li>
+  </ul>
+</nav>
+
+<main class="page-shell">
+  <div class="page-grid">
+    <section class="page-hero">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Terms of use
+      </div>
+      <h1 class="page-title">Use of this website should be guided by <em>clarity, fairness, and transparency.</em></h1>
+      <p class="page-intro">
+        Effective date: April 25, 2026. These Terms of Use describe the rules that apply to access and use of the PLASSX website and the informational materials presented here.
+      </p>
+    </section>
+
+    <section class="legal-layout">
+      <aside class="legal-nav">
+        <a href="#site-use">Site use</a>
+        <a href="#info-purpose">Informational purpose</a>
+        <a href="#sample-material">Sample materials</a>
+        <a href="#ip">Intellectual property</a>
+        <a href="#liability">Limitations</a>
+        <a href="#updates">Updates</a>
+      </aside>
+
+      <div class="legal-content">
+        <article class="legal-card" id="site-use">
+          <div class="section-tag">Site use</div>
+          <h2>Access to the PLASSX website is subject to straightforward terms.</h2>
+          <p>
+            By accessing this website, you agree to use it only for lawful, legitimate, and business-appropriate purposes. You agree not to misuse the site,
+            interfere with its operation, attempt unauthorized access, or use the content in a way that misrepresents PLASSX or its services.
+          </p>
+        </article>
+
+        <article class="legal-card" id="info-purpose">
+          <div class="section-tag">Purpose</div>
+          <h3>Informational purpose</h3>
+          <p>
+            Website content is provided for general informational and business development purposes. Nothing on this site should be interpreted as legal advice,
+            guaranteed commercial results, or a binding service commitment unless expressly confirmed in a separate written agreement.
+          </p>
+        </article>
+
+        <article class="legal-card" id="sample-material">
+          <div class="section-tag">Sample material</div>
+          <h3>Sample materials and transparency</h3>
+          <p>
+            PLASSX may present illustrative sample output to demonstrate reporting style, quality, and strategic framing. Unless expressly labeled otherwise,
+            sample content should not be treated as accurate live data, a real-time audit, or a factual assessment of any specific business, brand, or third party.
+          </p>
+        </article>
+
+        <article class="legal-card" id="ip">
+          <div class="section-tag">Intellectual property</div>
+          <h3>Ownership of content and brand materials</h3>
+          <p>
+            The PLASSX name, branding, website copy, design treatment, and related materials are protected by applicable intellectual property principles.
+            Except where otherwise permitted by law, you may not reproduce, republish, distribute, or create derivative works from this site without permission.
+          </p>
+        </article>
+
+        <article class="legal-card" id="liability">
+          <div class="section-tag">Limitations</div>
+          <h3>Limitations and disclaimers</h3>
+          <ul>
+            <li><strong>No warranty of uninterrupted service:</strong> the website is provided on an as-available basis.</li>
+            <li><strong>No guarantee of outcomes:</strong> commercial results depend on many variables outside the scope of website content alone.</li>
+            <li><strong>Third-party dependencies:</strong> fonts, hosting providers, analytics providers, or future integrations may affect site operation.</li>
+          </ul>
+        </article>
+
+        <article class="legal-card" id="updates">
+          <div class="section-tag">Updates</div>
+          <h3>Updates to these terms</h3>
+          <p>
+            PLASSX may revise these Terms of Use from time to time. Updated versions become effective once published on this site.
+            Continued use of the website after changes are posted constitutes acceptance of the updated terms.
+          </p>
+        </article>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-logo">
+    <img src="assets/images/plassx-logo.png" alt="PLASSX">
+  </div>
+  <div class="footer-copy">© 2026 PLASSX. AI Visibility Engine for Modern Brands.</div>
+  <div class="footer-links">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+</script>
+</body>
+</html>

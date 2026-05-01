@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLASSX — Coming Soon</title>
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy: #FFFFFF;
+  --navy-mid: #F7FAFE;
+  --navy-light: #EDF3FB;
+  --blue: #1A4A8A;
+  --blue-mid: #2460B0;
+  --accent: #2563EB;
+  --accent-light: #1D4ED8;
+  --white: #0F172A;
+  --off-white: #F8FAFC;
+  --cream: #EEF2F7;
+  --muted: rgba(15,23,42,0.62);
+  --border: rgba(15,23,42,0.08);
+  --border-light: rgba(37,99,235,0.16);
+  --gold: #B88946;
+  --shadow-soft: 0 18px 50px rgba(15,23,42,0.06);
+  --shadow-card: 0 14px 36px rgba(15,23,42,0.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  overflow-x: hidden;
+  cursor: auto;
+}
+
+/* ── Custom cursor ── */
+.cursor,
+.cursor-ring {
+  display: none;
+}
+
+/* ── Noise overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.018;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Nav ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 24px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(15,23,42,0.04);
+  transition: all 0.4s ease;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(18px);
+}
+nav.scrolled {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom-color: var(--border);
+  padding: 16px 48px;
+}
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+.nav-logo img {
+  width: clamp(136px, 12vw, 170px);
+  height: auto;
+  display: block;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  font-size: 13px;
+  font-weight: 400;
+  color: #FFFFFF !important;
+  background: var(--accent);
+  padding: 10px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: all 0.2s !important;
+  box-shadow: 0 12px 30px rgba(37,99,235,0.18);
+}
+.nav-cta:hover { background: var(--accent-light) !important; color: #FFFFFF !important; transform: translateY(-1px); }
+
+/* ── Hero ── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding: 140px 48px 100px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top right, rgba(37,99,235,0.10), transparent 24%),
+    linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+}
+
+.hero-grid-line {
+  position: absolute;
+  background: rgba(37,99,235,0.06);
+  pointer-events: none;
+}
+.hero-grid-line.v { width: 1px; top: 0; bottom: 0; }
+.hero-grid-line.h { height: 1px; left: 0; right: 0; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(37,99,235,0.16);
+  background: rgba(255,255,255,0.9);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.2s forwards;
+}
+.hero-badge-dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+
+.hero-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 300;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  max-width: 900px;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.9s ease 0.4s forwards;
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--accent-light);
+}
+.hero-headline .underline-gold {
+  position: relative;
+  display: inline-block;
+}
+.hero-headline .underline-gold::after {
+  content: '';
+  position: absolute;
+  bottom: 4px; left: 0; right: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: lineIn 1s ease 1.2s forwards;
+}
+@keyframes lineIn { to { transform: scaleX(1); } }
+
+.hero-sub {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(15,23,42,0.62);
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 56px;
+  opacity: 0;
+  animation: fadeUp 0.9s ease 0.6s forwards;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  opacity: 0;
+  animation: fadeUp 0.9s ease 0.8s forwards;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: #FFFFFF;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 16px 32px;
+  border-radius: 999px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0);
+  transition: background 0.25s;
+}
+.btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 16px 34px rgba(37,99,235,0.22); }
+.btn-primary:hover::after { background: rgba(255,255,255,0.08); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 300;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+.btn-ghost:hover { color: var(--accent-light); }
+.btn-arrow { font-size: 18px; transition: transform 0.2s; }
+.btn-ghost:hover .btn-arrow { transform: translateX(4px); }
+
+/* AI Query demo in hero */
+.hero-visual {
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 500px;
+  opacity: 0;
+  animation: fadeLeft 1s ease 1s forwards;
+}
+@keyframes fadeLeft { from{opacity:0;transform:translateY(-50%) translateX(30px)} to{opacity:1;transform:translateY(-50%) translateX(0)} }
+
+.ai-window {
+  background: rgba(255,255,255,0.96);
+  border: 1px solid rgba(15,23,42,0.08);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+.ai-window-bar {
+  background: rgba(248,250,252,0.95);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.ai-window-dot { width: 8px; height: 8px; border-radius: 50%; }
+.ai-window-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-left: 4px;
+  letter-spacing: 0.08em;
+}
+.ai-window-body { padding: 20px; }
+.ai-query-label {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+  font-family: 'DM Mono', monospace;
+}
+.ai-query-text {
+  font-size: 13px;
+  color: rgba(15,23,42,0.72);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: rgba(37,99,235,0.06);
+  border-radius: 14px;
+  border-left: 2px solid var(--accent);
+  font-style: italic;
+}
+.ai-response-label {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+  font-family: 'DM Mono', monospace;
+}
+.ai-hotel-result {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+.ai-hotel-result.visible {
+  background: rgba(37,99,235,0.08);
+  border: 1px solid rgba(37,99,235,0.16);
+  color: var(--white);
+}
+.ai-hotel-result.missing {
+  background: rgba(15,23,42,0.03);
+  border: 1px solid rgba(15,23,42,0.06);
+  color: rgba(15,23,42,0.32);
+}
+.ai-result-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--accent);
+  min-width: 16px;
+}
+.ai-result-num.gray { color: rgba(15,23,42,0.24); }
+.missing-label {
+  font-size: 10px;
+  color: rgba(255,100,100,0.5);
+  margin-left: auto;
+  font-family: 'DM Mono', monospace;
+}
+.ai-window-footer {
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: rgba(180,83,9,0.76);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.05em;
+}
+
+/* Hero scroll indicator */
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 1.4s forwards;
+}
+.scroll-line {
+  width: 40px; height: 1px;
+  background: var(--border-light);
+  position: relative;
+  overflow: hidden;
+}
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: var(--accent);
+  animation: scrollSlide 2s ease infinite;
+}
+@keyframes scrollSlide { to { left: 100%; } }
+.scroll-text {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+}
+
+/* Hero stats strip */
+.hero-stats {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  border-top: 1px solid var(--border);
+  display: flex;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 1.2s forwards;
+  background: rgba(255,255,255,0.86);
+  backdrop-filter: blur(12px);
+}
+.hero-stat {
+  flex: 1;
+  padding: 24px 48px;
+  border-right: 1px solid var(--border);
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--accent-light);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hero-stat-label {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── Section base ── */
+section { position: relative; z-index: 1; }
+
+.section-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-tag::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--accent);
+}
+
+/* ── Problem section ── */
+#problem {
+  padding: 120px 48px;
+  background: var(--off-white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.problem-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 54px);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 32px;
+}
+.problem-heading em { font-style: italic; color: var(--accent-light); }
+.problem-body {
+  font-size: 16px;
+  color: rgba(15,23,42,0.66);
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+.problem-pull {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1.5;
+  padding: 24px 0;
+  border-top: 1px solid rgba(184,137,70,0.18);
+  border-bottom: 1px solid rgba(184,137,70,0.18);
+  margin: 32px 0;
+}
+
+.shift-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.shift-card {
+  background: #FFFFFF;
+  padding: 28px 32px;
+  position: relative;
+}
+.shift-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+}
+.shift-card.then::before { background: rgba(15,23,42,0.12); }
+.shift-card.now::before { background: var(--accent); }
+.shift-era {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.shift-card.now .shift-era { color: var(--accent); }
+.shift-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+.shift-desc {
+  font-size: 13px;
+  color: rgba(15,23,42,0.62);
+  line-height: 1.7;
+}
+
+/* ── Stats section ── */
+#stats {
+  padding: 100px 48px;
+  background: #FFFFFF;
+}
+.stats-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  overflow: hidden;
+  margin-top: 60px;
+  box-shadow: var(--shadow-card);
+}
+.stat-card {
+  background: #FFFFFF;
+  padding: 48px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s ease;
+}
+.stat-card.visible::after { transform: scaleX(1); }
+.stat-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px;
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-number span { color: var(--accent); }
+.stat-text {
+  font-size: 14px;
+  color: rgba(15,23,42,0.62);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* ── How it works ── */
+#how {
+  padding: 120px 48px;
+  background: var(--off-white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.how-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.how-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  margin-bottom: 80px;
+  max-width: 600px;
+}
+.how-heading em { font-style: italic; color: var(--accent-light); }
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.process-step {
+  background: #FFFFFF;
+  padding: 40px 32px;
+  position: relative;
+  transition: background 0.3s;
+}
+.process-step:hover { background: #F8FBFF; }
+.process-step-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.process-step-num::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(15,23,42,0.12);
+}
+.process-step-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.process-step-body {
+  font-size: 13px;
+  color: rgba(15,23,42,0.62);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+/* ── What you get ── */
+#deliverables {
+  padding: 120px 48px;
+  background: #FFFFFF;
+}
+.deliverables-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.deliverables-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+.deliverables-heading em { font-style: italic; color: var(--accent-light); }
+.deliverables-sub {
+  font-size: 16px;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 64px;
+  max-width: 520px;
+  line-height: 1.7;
+}
+.deliverables-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.deliverable-card {
+  background: var(--navy-mid);
+  padding: 36px 32px;
+  transition: background 0.3s;
+}
+.deliverable-card:hover { background: #FFFFFF; }
+.deliverable-icon {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(74,143,232,0.25);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+.deliverable-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+.deliverable-body {
+  font-size: 13px;
+  color: rgba(15,23,42,0.62);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+/* ── Pricing ── */
+#pricing {
+  padding: 120px 48px;
+  background: var(--off-white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.pricing-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.pricing-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+.pricing-heading em { font-style: italic; color: var(--accent-light); }
+.pricing-sub {
+  font-size: 16px;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 64px;
+  max-width: 480px;
+  line-height: 1.7;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.pricing-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(15,23,42,0.08);
+  border-radius: 22px;
+  padding: 40px 36px;
+  position: relative;
+  transition: border-color 0.3s, transform 0.3s;
+  box-shadow: var(--shadow-card);
+}
+.pricing-card:hover { border-color: rgba(37,99,235,0.28); transform: translateY(-4px); }
+.pricing-card.featured {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F5F9FF 100%);
+  border-color: var(--accent);
+}
+.pricing-card.featured::before {
+  content: 'MOST POPULAR';
+  position: absolute;
+  top: -1px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #FFFFFF;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  padding: 5px 14px;
+  border-radius: 0 0 3px 3px;
+}
+.plan-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.plan-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.plan-period {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+.plan-divider {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 28px;
+}
+.plan-features {
+  list-style: none;
+  margin-bottom: 36px;
+}
+.plan-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: rgba(15,23,42,0.62);
+  line-height: 1.6;
+  margin-bottom: 12px;
+  font-weight: 300;
+}
+.plan-features li::before {
+  content: '→';
+  color: var(--accent);
+  font-size: 12px;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+.plan-btn {
+  display: block;
+  text-align: center;
+  padding: 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.plan-btn-outline {
+  border: 1px solid rgba(15,23,42,0.1);
+  color: var(--muted);
+}
+.plan-btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.plan-btn-solid {
+  background: var(--accent);
+  color: #FFFFFF;
+  border: 1px solid var(--accent);
+}
+.plan-btn-solid:hover {
+  background: var(--accent-light);
+}
+.pricing-guarantee {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* ── Why now ── */
+#why {
+  padding: 120px 48px;
+  background: #FFFFFF;
+}
+.why-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: start;
+}
+.why-left {}
+.why-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 32px;
+}
+.why-heading em { font-style: italic; color: var(--accent-light); }
+.why-body {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.8;
+  font-weight: 300;
+}
+.why-points {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.why-point {
+  background: var(--navy-mid);
+  padding: 28px 28px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  transition: background 0.25s;
+}
+.why-point:hover { background: #FFFFFF; }
+.why-point-marker {
+  width: 32px; height: 32px;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.why-point-marker svg { width: 14px; height: 14px; stroke: var(--accent); fill: none; }
+.why-point-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+.why-point-body {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ── CTA ── */
+#cta {
+  padding: 160px 48px;
+  background: linear-gradient(180deg, #F8FBFF 0%, #FFFFFF 100%);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+#cta::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+}
+.cta-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(44px, 6vw, 80px);
+  font-weight: 300;
+  line-height: 1.05;
+  margin-bottom: 32px;
+  letter-spacing: -0.02em;
+}
+.cta-heading em { font-style: italic; color: var(--accent-light); }
+.cta-body {
+  font-size: 17px;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 52px;
+}
+.cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.whitelist-form {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(220px, 1fr) auto;
+  gap: 12px;
+  width: min(760px, 100%);
+  margin: 0 auto;
+}
+.whitelist-input {
+  width: 100%;
+  min-height: 56px;
+  border: 1px solid rgba(15,23,42,0.12);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.92);
+  color: var(--white);
+  font: inherit;
+  font-size: 15px;
+  padding: 0 22px;
+  outline: none;
+  box-shadow: 0 14px 34px rgba(15,23,42,0.06);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.whitelist-input:focus {
+  border-color: rgba(37,99,235,0.45);
+  box-shadow: 0 16px 38px rgba(37,99,235,0.12);
+}
+.whitelist-input::placeholder { color: rgba(15,23,42,0.42); }
+.whitelist-submit {
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.whitelist-submit:disabled {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
+}
+.form-status {
+  grid-column: 1 / -1;
+  min-height: 20px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.form-status.success { color: #166534; }
+.form-status.error { color: #B91C1C; }
+.cta-note {
+  margin-top: 24px;
+  font-size: 12px;
+  color: rgba(15,23,42,0.36);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.06em;
+}
+
+/* ── Footer ── */
+footer {
+  background: #FFFFFF;
+  border-top: 1px solid var(--border);
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+}
+.footer-logo img {
+  width: 128px;
+  height: auto;
+  display: block;
+}
+.footer-copy {
+  font-size: 12px;
+  color: rgba(15,23,42,0.34);
+  font-weight: 300;
+}
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+.footer-links a {
+  font-size: 12px;
+  color: rgba(15,23,42,0.38);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--muted); }
+
+/* ── Scroll animations ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .hero-visual { display: none; }
+  .problem-grid { grid-template-columns: 1fr; gap: 48px; }
+  .process-steps { grid-template-columns: repeat(2, 1fr); }
+  .deliverables-grid { grid-template-columns: repeat(2, 1fr); }
+  .pricing-grid { grid-template-columns: 1fr; gap: 12px; }
+  .why-inner { grid-template-columns: 1fr; gap: 48px; }
+  .stats-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 20px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+  .nav-links { display: none; }
+  #hero { padding: 120px 24px 80px; }
+  .hero-stat { padding: 20px 24px; }
+  section { padding: 80px 24px !important; }
+  footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
+  .hero-stats { flex-direction: column; }
+  .hero-stats .hero-stat { border-right: none; border-bottom: 1px solid var(--border); }
+  .process-steps { grid-template-columns: 1fr; }
+  .deliverables-grid { grid-template-columns: 1fr; }
+  .whitelist-form { grid-template-columns: 1fr; }
+  .whitelist-submit { width: 100%; }
+}
+</style>
+  <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-82MYPRK7E1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-82MYPRK7E1");
+    </script>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo" aria-label="PLASSX home">
+    <img src="assets/images/plassx-logo.png" alt="PLASSX">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#problem">The Problem</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#deliverables">What You Get</a></li>
+    <li><a href="#cta" class="nav-cta">Join the Whitelist →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-line v" style="left:33%"></div>
+  <div class="hero-grid-line v" style="left:66%"></div>
+  <div class="hero-grid-line h" style="top:40%"></div>
+
+  <div class="hero-badge">
+    <span class="hero-badge-dot"></span>
+    AI Visibility Engine for Modern Brands · Coming Soon
+  </div>
+
+  <h1 class="hero-headline">
+    Your business is <em>invisible</em><br>
+    to the new<br>
+    <span class="underline-gold">discovery layer.</span>
+  </h1>
+
+  <p class="hero-sub">
+    "Millions of people are asking AI where to go, eat, stay, and buy...<br>
+Is your business in the answer?"
+    PLASSX does — and fixes it.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#cta" class="btn-primary">
+      Join the Whitelist
+      <span>→</span>
+    </a>
+    <a href="#how" class="btn-ghost">
+      See how it works <span class="btn-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- AI Window Visual -->
+  <div class="hero-visual">
+    <div class="ai-window">
+      <div class="ai-window-bar">
+        <div class="ai-window-dot" style="background:#FF5F57"></div>
+        <div class="ai-window-dot" style="background:#FEBC2E"></div>
+        <div class="ai-window-dot" style="background:#28C840"></div>
+        <span class="ai-window-title">ChatGPT — Buyer query</span>
+      </div>
+      <div class="ai-window-body">
+        <div class="ai-query-label">User asked:</div>
+        <div class="ai-query-text">"Best interior design studio in Dubai for a luxury villa renovation?"</div>
+        <div class="ai-response-label">AI recommended:</div>
+        <div class="ai-hotel-result visible">
+          <span class="ai-result-num">01</span>
+          Atelier Noor Design
+        </div>
+        <div class="ai-hotel-result visible">
+          <span class="ai-result-num">02</span>
+          Maison Form Studio
+        </div>
+        <div class="ai-hotel-result visible">
+          <span class="ai-result-num">03</span>
+          Meridian Interiors
+        </div>
+        <div class="ai-hotel-result missing">
+          <span class="ai-result-num gray">—</span>
+          Your Business
+          <span class="missing-label">not mentioned</span>
+        </div>
+      </div>
+      <div class="ai-window-footer">⚠ 0 of 50 queries returned your business</div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span class="scroll-text">Scroll to explore</span>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">72%</div>
+      <div class="hero-stat-label">of buyers now use AI to research products and services</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">3</div>
+      <div class="hero-stat-label">brands recommended per AI query — average</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">0%</div>
+      <div class="hero-stat-label">of businesses have a defined AI visibility strategy</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="problem-grid">
+    <div class="reveal">
+      <div class="section-tag">The challenge</div>
+      <h2 class="problem-heading">
+        Discovery has shifted.<br>
+        Most businesses haven't <em>noticed yet.</em>
+      </h2>
+      <p class="problem-body">
+        For years, digital discovery followed a familiar pattern. Buyers searched Google, compared websites, browsed marketplaces, and reviewed options. Brands competed for rankings, reviews, ads, and conversion. The game was visible and the rules were clear.
+      </p>
+      <div class="problem-pull">
+        "If AI doesn't understand your business, your business doesn't exist in the moments that increasingly shape buyer choice."
+      </div>
+      <p class="problem-body">
+        That model is changing. People increasingly open ChatGPT, Gemini, or a voice assistant and ask a simple question. The AI responds with two or three names — confidently, specifically, with no page two. Every business not named is invisible. Not ranked lower. Simply absent.
+      </p>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <div class="shift-cards">
+        <div class="shift-card then">
+          <div class="shift-era">Then — Search & marketplaces</div>
+          <div class="shift-title">Pages of results. Dozens of options.</div>
+          <div class="shift-desc">Buyers compared, scrolled, and chose from a wide competitive set. Strong SEO, media spend, and marketplace presence kept you visible. The playing field was large.</div>
+        </div>
+        <div class="shift-card now">
+          <div class="shift-era">Now — AI recommendations</div>
+          <div class="shift-title">Two or three names. That's it.</div>
+          <div class="shift-desc">AI systems select a handful of businesses they understand well. Brands without structured AI presence aren't ranked lower — they're not considered at all. The playing field just got very small.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-inner">
+    <div class="section-tag reveal">The reality</div>
+    <h2 class="problem-heading reveal" style="max-width:700px;margin-bottom:0;font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,52px);font-weight:300;line-height:1.15;">
+      The numbers your leadership team<br><em>needs to see</em>
+    </h2>
+    <div class="stats-grid">
+      <div class="stat-card reveal">
+        <div class="stat-number">72<span>%</span></div>
+        <div class="stat-text">of decision-makers now use AI assistants to research products, vendors, and service providers before making a shortlist.</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-2">
+        <div class="stat-number">2–<span>3</span></div>
+        <div class="stat-text">brands commonly returned per AI recommendation query. If your business is not one of them, you are not part of that buyer's consideration set.</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-3">
+        <div class="stat-number">0<span>%</span></div>
+        <div class="stat-text">of businesses currently have a structured AI visibility strategy. This remains one of the widest uncontested gaps in modern digital discovery.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="how-inner">
+    <div class="section-tag reveal">The process</div>
+    <h2 class="how-heading reveal">
+      Four steps from<br><em>invisible to recommended</em>
+    </h2>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="process-step-num">01</div>
+        <div class="process-step-title">AI Audit</div>
+        <div class="process-step-body">We run your business through 50 real buyer queries across ChatGPT, Gemini, and Perplexity. You see exactly where you appear, what is said, and where competitors outrank you.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="process-step-num">02</div>
+        <div class="process-step-title">Gap Analysis</div>
+        <div class="process-step-body">We identify every gap between how AI systems describe your business and how you actually want to be positioned. Errors, omissions, and misrepresentations are surfaced and prioritised.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="process-step-num">03</div>
+        <div class="process-step-title">Optimisation</div>
+        <div class="process-step-body">We generate an AI-ready content layer — company descriptions, structured data, FAQ sets, and schema markup — built specifically for how AI systems read and recommend businesses.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="process-step-num">04</div>
+        <div class="process-step-title">Monitor & Grow</div>
+        <div class="process-step-body">AI visibility changes. We track your score monthly, alert you to shifts, and refresh your content as AI platforms update — so your position compounds over time.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section id="deliverables">
+  <div class="deliverables-inner">
+    <div class="section-tag reveal">What your business receives</div>
+    <h2 class="deliverables-heading reveal">
+      Tangible deliverables.<br><em>Measurable outcomes.</em>
+    </h2>
+    <p class="deliverables-sub reveal">Every engagement produces concrete assets your team can implement and results your leadership team can act on.</p>
+    <div class="deliverables-grid">
+      <div class="deliverable-card reveal">
+        <div class="deliverable-icon">◎</div>
+        <div class="deliverable-title">AI Visibility Score</div>
+        <div class="deliverable-body">A baseline score — 0 to 100 — measuring your current AI presence across leading platforms, benchmarked against your direct competitors in the same category.</div>
+      </div>
+      <div class="deliverable-card reveal reveal-delay-1">
+        <div class="deliverable-icon">◈</div>
+        <div class="deliverable-title">Full Audit Report</div>
+        <div class="deliverable-body">A detailed breakdown of how AI systems currently describe, position, and recommend your business — including every error, gap, and misrepresentation identified.</div>
+      </div>
+      <div class="deliverable-card reveal reveal-delay-2">
+        <div class="deliverable-icon">◆</div>
+        <div class="deliverable-title">Content Package</div>
+        <div class="deliverable-body">AI-ready business descriptions, attribute sets, FAQ content, and JSON-LD structured data — formatted precisely for how AI systems consume and recommend business information.</div>
+      </div>
+      <div class="deliverable-card reveal reveal-delay-1">
+        <div class="deliverable-icon">◉</div>
+        <div class="deliverable-title">Query Coverage Map</div>
+        <div class="deliverable-body">A map of which buyer AI queries your business currently appears in — and which high-value queries your competitors are winning that you are not.</div>
+      </div>
+      <div class="deliverable-card reveal reveal-delay-2">
+        <div class="deliverable-icon">◐</div>
+        <div class="deliverable-title">Monthly Report</div>
+        <div class="deliverable-body">Ongoing monitoring with monthly score updates, movement tracking, and recommended actions. Clear enough for your team to use in leadership reviews and planning.</div>
+      </div>
+      <div class="deliverable-card reveal reveal-delay-3">
+        <div class="deliverable-icon">◑</div>
+        <div class="deliverable-title">Visibility Strategist</div>
+        <div class="deliverable-body">A dedicated PLASSX expert who understands your business, your market, and your competitive set — available for monthly strategy calls on Pro and Portfolio plans.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" hidden>
+  <div class="pricing-inner">
+    <div class="section-tag reveal">Investment</div>
+    <h2 class="pricing-heading reveal">Straightforward pricing.<br><em>No surprises.</em></h2>
+    <p class="pricing-sub reveal">One additional qualified customer per month can justify Starter. The upside from being recommended earlier in the buying journey compounds quickly.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
+        <div class="plan-name">Visibility Starter</div>
+        <div class="plan-price">$299</div>
+        <div class="plan-period">per month · single business</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>Full AI Visibility Score + audit report</li>
+          <li>AI-optimised content package</li>
+          <li>50-query coverage across ChatGPT, Gemini & Perplexity</li>
+          <li>Monthly monitoring & progress report</li>
+          <li>Email support</li>
+        </ul>
+        <a href="#cta" class="plan-btn plan-btn-outline">Get started →</a>
+      </div>
+      <div class="pricing-card featured reveal reveal-delay-1">
+        <div class="plan-name">Visibility Pro</div>
+        <div class="plan-price">$599</div>
+        <div class="plan-period">per month · single business</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>Everything in Starter</li>
+          <li>Competitive benchmarking across your category</li>
+          <li>Dedicated visibility strategist · monthly strategy call</li>
+          <li>Quarterly content refresh as AI platforms update</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="#cta" class="plan-btn plan-btn-solid">Get started →</a>
+      </div>
+      <div class="pricing-card reveal reveal-delay-2">
+        <div class="plan-name">Portfolio</div>
+        <div class="plan-price" style="font-size:36px;padding-top:8px;">Custom</div>
+        <div class="plan-period">per month · multi-location brands</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>All Pro features across every business unit</li>
+          <li>Consolidated multi-location AI visibility dashboard</li>
+          <li>Portfolio-level competitive benchmarking</li>
+          <li>Quarterly executive business reviews</li>
+          <li>Annual contract preferred · volume pricing</li>
+        </ul>
+        <a href="#cta" class="plan-btn plan-btn-outline">Request a proposal →</a>
+      </div>
+    </div>
+    <p class="pricing-guarantee reveal">All plans include a 30-day AI Visibility Score improvement guarantee — backed by confidence in the results, not a safety net.</p>
+  </div>
+</section>
+
+<!-- WHY NOW -->
+<section id="why">
+  <div class="why-inner">
+    <div>
+      <div class="section-tag reveal">Why act now</div>
+      <h2 class="why-heading reveal">
+        The window to<br>lead your market<br>is <em>open today.</em>
+      </h2>
+      <p class="why-body reveal">
+        AI visibility is one of the widest uncontested gaps in digital growth right now. Most competitors have not moved. The businesses that establish a strong AI presence in the next twelve months will be the default recommendations as AI adoption accelerates. Early presence compounds and late entry becomes harder to overcome.
+      </p>
+    </div>
+    <div class="why-points reveal reveal-delay-2">
+      <div class="why-point">
+        <div class="why-point-marker">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <div class="why-point-title">AI models are forming opinions today</div>
+          <div class="why-point-body">ChatGPT and Gemini are already recommending businesses, products, and service providers. The profiles they build now become the baseline they draw from as adoption grows. Waiting is not neutral — it means falling further behind.</div>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-marker">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="why-point-title">Traditional SEO does not transfer</div>
+          <div class="why-point-body">AI systems do not simply mirror Google rankings. They synthesise from structured data, content quality, and signals most businesses have never optimised. Your current digital investment does not automatically protect you here.</div>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-marker">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <div class="why-point-title">Your category is not ready</div>
+          <div class="why-point-body">Very few businesses in your category have an active AI visibility strategy. Moving now means owning a channel before your market catches up — a first-mover advantage that is genuinely rare.</div>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-marker">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <div class="why-point-title">Better discovery. Better economics.</div>
+          <div class="why-point-body">AI-driven discovery can route qualified buyers directly to your business — reducing dependency on expensive intermediaries and improving the economics of acquisition. The ROI argument is straightforward.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-tag reveal">Start here</div>
+  <p class="cta-note reveal">Coming soon · Join the whitelist for early access.
+</p>
+  <h2 class="cta-heading reveal">
+    Be first in line<br>when PLASSX <em>launches.</em>
+  </h2>
+  <p class="cta-body reveal">
+    PLASSX is getting ready to launch. Join the whitelist and we will let you know when early access opens for businesses ready to improve how AI systems see and recommend their brand.
+  </p>
+  <form class="whitelist-form reveal" id="whitelistForm">
+    <input class="whitelist-input" type="text" name="name" autocomplete="name" placeholder="Your name" required>
+    <input class="whitelist-input" type="email" name="email" autocomplete="email" placeholder="Email address" required>
+    <button class="btn-primary whitelist-submit" type="submit" style="font-size:15px;padding:18px 40px;">
+      Join the Whitelist →
+    </button>
+    <p class="form-status" id="formStatus" aria-live="polite"></p>
+  </form>
+  <p class="cta-note reveal">Early access notification · No credit card required</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="assets/images/plassx-logo.png" alt="PLASSX">
+  </div>
+  <div class="footer-copy">© 2026 PLASSX. AI Visibility Engine for Modern Brands.</div>
+  <div class="footer-links">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+function animCursor() {
+  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+  rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animCursor);
+}
+animCursor();
+
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+// Whitelist form submission
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwnuBctuRtA3THoKdXOKcEjxao_aowFqN7lBMnHYCZ_iMlL2k0cdAKA2nf6AmPpsyyP/exec';
+const whitelistForm = document.getElementById('whitelistForm');
+const formStatus = document.getElementById('formStatus');
+
+if (whitelistForm) {
+  whitelistForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const submitButton = whitelistForm.querySelector('button[type="submit"]');
+    const formData = new FormData(whitelistForm);
+    formData.append('source', 'PLASSX coming soon website');
+    formData.append('page', window.location.href);
+
+    formStatus.className = 'form-status';
+    formStatus.textContent = 'Submitting...';
+    submitButton.disabled = true;
+
+    try {
+      if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes('PASTE_YOUR')) {
+        throw new Error('Google Apps Script URL is missing.');
+      }
+
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: new URLSearchParams(formData),
+      });
+
+      whitelistForm.reset();
+      formStatus.className = 'form-status success';
+      formStatus.textContent = 'You are on the whitelist. We will be in touch soon.';
+    } catch (error) {
+      formStatus.className = 'form-status error';
+      formStatus.textContent = 'Something went wrong. Please try again in a moment.';
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+}
+
+// Stat card line animation
+const statCards = document.querySelectorAll('.stat-card');
+const statObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.3 });
+statCards.forEach(el => statObs.observe(el));
+
+// Typed effect for AI window query
+const queryText = document.querySelector('.ai-query-text');
+if (queryText) {
+  const original = queryText.textContent;
+  queryText.textContent = '';
+  let i = 0;
+  setTimeout(() => {
+    const type = setInterval(() => {
+      queryText.textContent += original[i++];
+      if (i >= original.length) clearInterval(type);
+    }, 35);
+  }, 1800);
+}
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>
