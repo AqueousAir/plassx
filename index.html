@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PLASSX</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --text: #FFFFFF;
+      --muted: rgba(255, 255, 255, 0.65);
+      --soft: rgba(255, 255, 255, 0.82);
+      --accent: #3F63E0;
+      --line: rgba(255, 255, 255, 0.14);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 28px 8%;
+      display: flex;
+      justify-content: space-between;
+      z-index: 1000;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+    }
+
+    .logo {
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    /* SECTION BASE */
+    .section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 8%;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+    }
+
+    .content {
+      position: relative;
+      max-width: 900px;
+    }
+
+    .portfolio-content {
+      max-width: 1120px;
+      width: 100%;
+      padding: 120px 0;
+    }
+
+    /* TYPO */
+    h1 {
+      font-size: 72px;
+      line-height: 1.1;
+      letter-spacing: -2px;
+    }
+
+    h2 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 650px;
+    }
+
+    span {
+      color: var(--accent);
+    }
+
+    /* PRODUCTS */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 38px;
+    }
+
+    .product {
+      min-height: 220px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03)),
+        rgba(4, 8, 18, 0.5);
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--accent);
+      opacity: 0.72;
+    }
+
+    .product-top {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: 54px;
+    }
+
+    .product-number {
+      position: absolute;
+      right: 0;
+      top: -4px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.34);
+      letter-spacing: 0.18em;
+    }
+
+    .product p {
+      margin-top: 28px;
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--soft);
+      max-width: none;
+    }
+
+    /* STATEMENT */
+    .statement {
+      font-size: 48px;
+      line-height: 1.2;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 30px 8%;
+      background: black;
+      color: var(--muted);
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:768px) {
+      nav {
+        padding: 24px 6%;
+      }
+
+      .section {
+        padding: 0 6%;
+      }
+
+      h1 {
+        font-size: 42px;
+        letter-spacing: -1px;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+
+      .statement {
+        font-size: 30px;
+      }
+
+      .portfolio-content {
+        padding: 100px 0 70px;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product {
+        min-height: auto;
+        padding: 22px;
+      }
+    }
+
+    @media(min-width:769px) and (max-width:1100px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 28px;
+      /* perfect navbar size */
+      width: auto;
+      display: block;
+    }
+
+    a {
+      color: #3F63E0;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .product img {
+      max-height: 34px;
+      max-width: 180px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">
+      <img src="img/logo.png" alt="PLASSX">
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="section" style="background-image:url('img/section01.png');">
+    <div class="overlay"></div>
+    <div class="content">
+      <h1>
+        A holding company for systems that <span>structure</span> and <span>direct</span> intelligence.
+      </h1>
+      <p>
+        PLASSX builds, owns, and operates companies at the layer where AI, infrastructure, and interaction take shape.
+      </p>
+    </div>
+  </section>
+
+  <!-- VISION -->
+  <section class="section" style="background-image:url('img/section02.png');">
+    <div class="overlay"></div>
+    <div class="content">
+      <h2>A portfolio built around systems</h2>
+      <p>
+        PLASSX brings together companies designed for long-term capacity: intelligent platforms, resilient utilities,
+        sustainable production, and new layers of human-AI interaction.
+      </p>
+    </div>
+  </section>
+
+  <!-- STATEMENT -->
+  <section class="section" style="background-image:url('img/section03.png');">
+    <div class="overlay"></div>
+    <div class="content statement">
+      The future is not one product.<br>
+      It is <span>how it sees</span>,<br>
+      <span>how it understands</span>,<br>
+      and <span>how systems operate</span>.
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="section" style="background-image:url('img/section04.png');">
+    <div class="overlay"></div>
+    <div class="content portfolio-content">
+      <h2>Portfolio companies</h2>
+      <p>
+        Each company operates independently within the PLASSX group, connected by a shared focus on intelligence,
+        infrastructure, and durable real-world systems.
+      </p>
+
+      <div class="portfolio-grid">
+        <div class="product">
+          <div class="product-top">
+            <img src="img/Lumynex.png" alt="Lumynex">
+            <div class="product-number">01</div>
+          </div>
+          <p>
+            AI-supported learning for guided lessons, interactive practice, homework support, and parent progress
+            insights.
+          </p>
+        </div>
+
+
+
+        <div class="product">
+          <div class="product-top">
+            <img src="img/yorina-logo.png" alt="YORINA">
+            <div class="product-number">03</div>
+          </div>
+          <p>
+            An AI interaction platform for persistent identity, memory, and relationship layers between humans and AI.
+          </p>
+        </div>
+
+        <div class="product">
+          <div class="product-top">
+            <img src="img/airovia.png" alt="AIROVIA">
+            <div class="product-number">04</div>
+          </div>
+          <p>
+            Sustainability infrastructure focused on water resilience, long-term capacity, and adaptive environmental
+            systems.
+          </p>
+        </div>
+
+        <div class="product">
+          <div class="product-top">
+            <img src="img/ventron-logo.png" alt="Ventron Energy">
+            <div class="product-number">05</div>
+          </div>
+          <p>
+            VENTRON is an AI energy platform delivering real-time monitoring, predictive insights, and smarter energy
+            decisions. </p>
+        </div>
+
+        <div class="product">
+          <div class="product-top">
+            <img src="img/SOILLEX.png" alt="SOILLEX">
+            <div class="product-number">06</div>
+          </div>
+          <p>
+            Climate-independent smart vertical farming integrated with energy and water systems for efficient food
+            production.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <section class="section" style="background-image:url('img/section05.png');">
+    <div class="overlay"></div>
+    <div class="content">
+      <h2>The group layer</h2>
+      <p>
+        PLASSX holds and develops companies where intelligence becomes infrastructure - in the structure of systems,
+        the flow of data, and the way people interact with technology.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 PLASSX. All Rights Reserved.
+    Fiind us on <a href="https://www.linkedin.com/company/plassx" target="_blank"> LinkedIn</a>
+
+  </footer>
+
+</body>
+
+</html>
