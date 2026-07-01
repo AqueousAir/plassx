@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover the PLASSX investment opportunity and connect with our team.">
+  <title>Invest in PLASSX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text: #fff;
+      --muted: rgba(255, 255, 255, 0.66);
+      --soft: rgba(255, 255, 255, 0.84);
+      --accent: #3f63e0;
+      --line: rgba(255, 255, 255, 0.13);
+      --surface: #080b12;
+      --surface-soft: #0d111b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--surface); color: var(--text); font-family: 'Inter', sans-serif; }
+    a { color: inherit; text-decoration: none; }
+
+    nav {
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 28px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    nav img { display: block; width: auto; height: 28px; }
+    .back-link { color: var(--muted); font-size: 13px; }
+    .back-link:hover { color: #fff; }
+
+    .invest-hero {
+      min-height: 92vh;
+      padding: 150px 8% 90px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(90deg, rgba(3, 6, 13, 0.95), rgba(3, 6, 13, 0.48)), url('img/section01.png') center/cover;
+    }
+
+    .invest-hero::after {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      right: -170px;
+      bottom: -260px;
+      border-radius: 50%;
+      background: rgba(63, 99, 224, 0.28);
+      filter: blur(90px);
+    }
+
+    .hero-copy { position: relative; z-index: 1; max-width: 920px; }
+    .eyebrow { margin-bottom: 22px; color: #8da4f4; font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; }
+    h1 { max-width: 850px; font-size: clamp(48px, 7vw, 88px); font-weight: 500; letter-spacing: -0.055em; line-height: 0.98; }
+    h1 span, h2 span { color: var(--accent); }
+    .hero-copy > p { max-width: 690px; margin-top: 28px; color: var(--soft); font-size: 19px; line-height: 1.65; }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 34px;
+      padding: 15px 21px;
+      background: var(--accent);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .button:hover { background: #5273e8; transform: translateY(-2px); }
+
+    main section { padding: 110px 8%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-head { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 60px; margin-bottom: 54px; }
+    h2 { font-size: clamp(34px, 4.6vw, 58px); font-weight: 500; letter-spacing: -0.04em; line-height: 1.08; }
+    .section-head p { color: var(--muted); font-size: 17px; line-height: 1.75; }
+
+    .business { background: var(--surface-soft); }
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .pillar { min-height: 245px; padding: 30px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .number { display: block; margin-bottom: 58px; color: #7892ec; font-size: 12px; letter-spacing: 0.15em; }
+    h3 { margin-bottom: 13px; font-size: 20px; font-weight: 500; }
+    .pillar p, .portfolio-card p, .reason p { color: var(--muted); font-size: 15px; line-height: 1.65; }
+
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .portfolio-card { min-height: 225px; padding: 26px; border: 1px solid var(--line); background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015)); }
+    .portfolio-card img { display: block; max-width: 170px; max-height: 35px; width: auto; margin-bottom: 55px; }
+    .portfolio-card h3 { color: var(--soft); }
+
+    .impact { background: #0b1020; }
+    .impact-statement { max-width: 970px; margin-bottom: 68px; font-size: clamp(30px, 4vw, 52px); font-weight: 300; line-height: 1.25; }
+    .impact-statement span { color: #8da4f4; }
+    .impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); }
+    .impact-item { min-height: 185px; padding: 26px; background: #0b1020; }
+    .impact-item strong { display: block; margin-bottom: 45px; color: #7892ec; font-size: 26px; font-weight: 400; }
+    .impact-item p { color: var(--soft); font-size: 14px; line-height: 1.6; }
+
+    .reasons { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 70px; }
+    .reason-list { border-top: 1px solid var(--line); }
+    .reason { display: grid; grid-template-columns: 45px 1fr; padding: 27px 0; border-bottom: 1px solid var(--line); }
+    .reason > span { color: #7892ec; font-size: 12px; padding-top: 5px; }
+
+    .contact { background: #f2f3f7; color: #111522; }
+    .contact .section-head p { color: #5c6270; }
+    form { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; padding: 42px; background: #fff; border: 1px solid #dfe2ea; }
+    .field { display: flex; flex-direction: column; gap: 9px; }
+    .field.full { grid-column: 1 / -1; }
+    label { font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+    input, select, textarea {
+      width: 100%;
+      padding: 14px 15px;
+      border: 1px solid #ccd1dc;
+      border-radius: 0;
+      background: #fafbfc;
+      color: #111522;
+      font: inherit;
+      font-size: 15px;
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(63,99,224,0.1); }
+    textarea { min-height: 130px; resize: vertical; }
+    .consent { grid-column: 1 / -1; display: flex; align-items: flex-start; gap: 11px; color: #676d79; font-size: 13px; line-height: 1.5; }
+    .consent input { width: 16px; height: 16px; margin-top: 2px; }
+    button { justify-self: start; border-radius: 0; cursor: pointer; margin-top: 4px !important; }
+    .form-status { align-self: center; color: #465069; font-size: 14px; }
+
+    footer { padding: 32px 8%; display: flex; justify-content: space-between; gap: 20px; background: #05070b; color: var(--muted); font-size: 13px; }
+
+    @media (max-width: 820px) {
+      nav, .invest-hero, main section, footer { padding-left: 6%; padding-right: 6%; }
+      .invest-hero { min-height: 82vh; }
+      .section-head, .reasons { grid-template-columns: 1fr; gap: 28px; }
+      .pillars, .portfolio-grid { grid-template-columns: 1fr; }
+      .impact-grid { grid-template-columns: 1fr 1fr; }
+      form { grid-template-columns: 1fr; padding: 25px; }
+      .field.full, .consent { grid-column: 1; }
+    }
+
+    @media (max-width: 500px) {
+      main section { padding-top: 78px; padding-bottom: 78px; }
+      .back-link { font-size: 0; }
+      .back-link::after { content: "← Back"; font-size: 13px; }
+      .impact-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="index.html" aria-label="PLASSX home"><img src="img/logo.png" alt="PLASSX"></a>
+    <a class="back-link" href="index.html">← Back to PLASSX</a>
+  </nav>
+
+  <header class="invest-hero">
+    <div class="hero-copy">
+      <div class="eyebrow">Investor opportunity</div>
+      <h1>Invest in the systems shaping <span>what comes next.</span></h1>
+      <p>PLASSX gives investors access to a focused portfolio of companies building intelligent platforms, resilient infrastructure, and sustainable real-world systems.</p>
+      <a class="button" href="#investor-form">Start a conversation <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="business">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Built as a <span>business platform.</span></h2>
+          <p>PLASSX supports companies at the intersection of intelligence, infrastructure, and everyday life. Shared strategy and operational resources help each business move faster while retaining a clear, independent market focus.</p>
+        </div>
+        <div class="pillars">
+          <article class="pillar"><span class="number">01</span><h3>Build</h3><p>We turn high-conviction ideas into focused businesses designed around real market needs.</p></article>
+          <article class="pillar"><span class="number">02</span><h3>Own</h3><p>Long-term ownership aligns company building, capital, and durable value creation.</p></article>
+          <article class="pillar"><span class="number">03</span><h3>Operate</h3><p>Shared expertise, technology, and systems give portfolio companies room to scale.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>One portfolio.<br><span>Multiple frontiers.</span></h2>
+          <p>Our companies address distinct opportunities while sharing a common foundation: applied intelligence that improves access, resilience, productivity, and human experience.</p>
+        </div>
+        <div class="portfolio-grid">
+          <article class="portfolio-card"><img src="img/Lumynex.png" alt="Lumynex"><h3>Learning technology</h3><p>AI-supported learning, guided practice, and progress insights for students and families.</p></article>
+          <article class="portfolio-card"><img src="img/yorina-logo.png" alt="YORINA"><h3>Human–AI interaction</h3><p>Persistent identity, memory, and relationship layers between people and AI.</p></article>
+          <article class="portfolio-card"><img src="img/airovia.png" alt="AIROVIA"><h3>Water resilience</h3><p>Adaptive environmental infrastructure designed for long-term water capacity.</p></article>
+          <article class="portfolio-card"><img src="img/ventron-logo.png" alt="Ventron Energy"><h3>Atmospheric water</h3><p>Intelligent, energy-efficient systems that transform moisture in the air into clean water.</p></article>
+          <article class="portfolio-card"><img src="img/SOILLEX.png" alt="SOILLEX"><h3>Sustainable food systems</h3><p>Climate-independent vertical farming integrated with energy and water systems.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="impact">
+      <div class="section-inner">
+        <p class="impact-statement">We believe durable returns and meaningful impact can come from the same place: <span>solving essential problems at system scale.</span></p>
+        <div class="impact-grid">
+          <div class="impact-item"><strong>01</strong><p>Expand access to more adaptive education.</p></div>
+          <div class="impact-item"><strong>02</strong><p>Strengthen water and resource resilience.</p></div>
+          <div class="impact-item"><strong>03</strong><p>Enable efficient, local food production.</p></div>
+          <div class="impact-item"><strong>04</strong><p>Advance useful and human-centered AI.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner reasons">
+        <h2>Why invest in <span>PLASSX?</span></h2>
+        <div class="reason-list">
+          <div class="reason"><span>01</span><div><h3>Portfolio exposure</h3><p>Participate in several high-potential sectors through one connected investment thesis.</p></div></div>
+          <div class="reason"><span>02</span><div><h3>Shared operating advantage</h3><p>Portfolio companies benefit from common technology, strategy, talent, and infrastructure.</p></div></div>
+          <div class="reason"><span>03</span><div><h3>Built for the long term</h3><p>Our ownership mindset prioritizes resilient businesses and compounding value over short cycles.</p></div></div>
+          <div class="reason"><span>04</span><div><h3>Real-world relevance</h3><p>We focus on essential needs with global significance: learning, water, food, energy, and AI interaction.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="investor-form">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Let’s build what<br>comes next.</h2>
+          <p>Tell us a little about yourself and your investment interests. Our team will review your details and contact you to continue the conversation.</p>
+        </div>
+        <form id="interest-form" data-google-sheet-form data-form-type="investor" data-success-message="Thank you. Your investment interest has been submitted.">
+          <div class="field"><label for="name">Full name *</label><input id="name" name="name" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="email">Email address *</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="company">Company / fund</label><input id="company" name="company" type="text" autocomplete="organization"></div>
+          <div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+          <div class="field"><label for="type">Investor type *</label><select id="type" name="investor_type" required><option value="" selected disabled>Select investor type</option><option>Individual investor</option><option>Family office</option><option>Venture capital</option><option>Private equity</option><option>Institutional investor</option><option>Strategic partner</option></select></div>
+          <div class="field"><label for="range">Indicative investment range</label><select id="range" name="investment_range"><option value="" selected>Prefer not to say</option><option>Under $100,000</option><option>$100,000–$500,000</option><option>$500,000–$1 million</option><option>$1 million–$5 million</option><option>$5 million+</option></select></div>
+          <div class="field full"><label for="message">What interests you about PLASSX?</label><textarea id="message" name="message" placeholder="Tell us about your investment focus or the portfolio areas you would like to discuss."></textarea></div>
+          <label class="consent"><input type="checkbox" name="consent" value="Yes" required><span>I agree to be contacted by the PLASSX team regarding investment opportunities. *</span></label>
+          <button class="button" type="submit">Submit interest <span aria-hidden="true">→</span></button>
+          <p class="form-status" id="form-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>© 2026 PLASSX. All rights reserved.</span><a href="https://www.linkedin.com/company/plassx" target="_blank" rel="noopener">LinkedIn</a></footer>
+
+  <script src="google-sheet-form.js"></script>
+</body>
+
+</html>

@@ -99,8 +99,55 @@
     p {
       margin-top: 20px;
       font-size: 18px;
+      line-height: 1.6;
       color: var(--muted);
       max-width: 650px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 15px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: var(--accent);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+    }
+
+    .cta-button:hover {
+      background: #5273e8;
+      border-color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      transform: translateY(-2px);
+    }
+
+    .cta-button.secondary {
+      background: rgba(5, 9, 18, 0.48);
+      border-color: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(8px);
+    }
+
+    .cta-button.secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.55);
+    }
+
+    .cta-button span {
+      color: #fff;
+      font-size: 19px;
+      line-height: 1;
     }
 
     span {
@@ -213,6 +260,14 @@
         min-height: auto;
         padding: 22px;
       }
+
+      .hero-actions {
+        margin-top: 28px;
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .cta-button { justify-content: space-between; }
     }
 
     @media(min-width:769px) and (max-width:1100px) {
@@ -270,6 +325,10 @@
       <p>
         PLASSX builds, owns, and operates companies at the layer where AI, infrastructure, and interaction take shape.
       </p>
+      <div class="hero-actions">
+        <a class="cta-button" href="invest.html">Invest in PLASSX <span aria-hidden="true">→</span></a>
+        <a class="cta-button secondary" href="founders.html">Submit your business <span aria-hidden="true">→</span></a>
+      </div>
     </div>
   </section>
 
@@ -309,7 +368,7 @@
       <div class="portfolio-grid">
         <div class="product">
           <div class="product-top">
-            <img src="img/lumynex.png" alt="Lumynex">
+            <img src="img/Lumynex.png" alt="Lumynex">
             <div class="product-number">01</div>
           </div>
           <p>
@@ -323,7 +382,7 @@
         <div class="product">
           <div class="product-top">
             <img src="img/yorina-logo.png" alt="YORINA">
-            <div class="product-number">02</div>
+            <div class="product-number">03</div>
           </div>
           <p>
             An AI interaction platform for persistent identity, memory, and relationship layers between humans and AI.
@@ -333,7 +392,7 @@
         <div class="product">
           <div class="product-top">
             <img src="img/airovia.png" alt="AIROVIA">
-            <div class="product-number">03</div>
+            <div class="product-number">04</div>
           </div>
           <p>
             Sustainability infrastructure focused on water resilience, long-term capacity, and adaptive environmental
@@ -344,17 +403,17 @@
         <div class="product">
           <div class="product-top">
             <img src="img/ventron-logo.png" alt="Ventron Energy">
-            <div class="product-number">04</div>
+            <div class="product-number">05</div>
           </div>
           <p>
-            VENTRON is an AI energy platform delivering real-time monitoring, predictive insights, and smarter energy
-            decisions. </p>
+            VENTRON AWG transforms moisture in the air into clean water through intelligent, energy-efficient systems.
+          </p>
         </div>
 
         <div class="product">
           <div class="product-top">
             <img src="img/SOILLEX.png" alt="SOILLEX">
-            <div class="product-number">05</div>
+            <div class="product-number">06</div>
           </div>
           <p>
             Climate-independent smart vertical farming integrated with energy and water systems for efficient food
