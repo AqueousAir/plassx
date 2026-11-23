@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#06090e">
+  <title>PLASSX HUMAN ONE</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --white: #f5f4f1;
+      --gold: #c9b38e;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { width: 100%; min-height: 100%; margin: 0; }
+    body {
+      min-height: 100vh;
+      min-height: 100svh;
+      overflow: hidden;
+      background: #06090e;
+      color: var(--white);
+      font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+    }
+    .launch-page {
+      position: relative;
+      display: grid;
+      min-height: 100vh;
+      min-height: 100svh;
+      place-items: center;
+      overflow: hidden;
+      isolation: isolate;
+      padding: 120px 7vw 72px;
+    }
+    .hero-image {
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 48%;
+    }
+    .hero-overlay {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(4,7,11,.48), rgba(4,7,11,.3) 48%, rgba(4,7,11,.48)),
+        linear-gradient(0deg, rgba(4,7,11,.68), rgba(4,7,11,.16) 52%, rgba(4,7,11,.36));
+    }
+    .brand {
+      position: absolute;
+      top: clamp(24px, 4vh, 42px);
+      left: clamp(22px, 5vw, 76px);
+      display: inline-flex;
+      align-items: center;
+    }
+    .brand img { display: block; width: clamp(116px, 10vw, 156px); height: auto; }
+    h1 {
+      max-width: 1000px;
+      margin: 0;
+      text-align: center;
+      color: var(--white);
+      font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+      font-size: clamp(48px, 7vw, 96px);
+      font-weight: 400;
+      letter-spacing: -.035em;
+      line-height: 1.08;
+      text-wrap: balance;
+      text-shadow: 0 3px 35px rgba(0,0,0,.42);
+    }
+    @media (max-width: 600px) {
+      .launch-page { padding: 100px 24px 60px; }
+      .hero-image { object-position: 54% center; }
+      .hero-overlay { background: linear-gradient(0deg, rgba(4,7,11,.74), rgba(4,7,11,.38) 55%, rgba(4,7,11,.42)); }
+      .brand img { width: 104px; }
+      h1 { font-size: clamp(43px, 11vw, 60px); }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <main class="launch-page">
+    <img class="hero-image" src="hero.png" alt="Illustrative PLASSX satellite above Earth">
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <a class="brand" href="../index.html" aria-label="PLASSX HUMAN ONE">
+      <img src="logo.png" alt="PLASSX">
+    </a>
+    <h1>One Message. One Humanity.</h1>
+  </main>
+</body>
+</html>
