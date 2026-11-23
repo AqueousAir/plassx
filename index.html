@@ -42,14 +42,6 @@
       object-fit: cover;
       object-position: center 48%;
     }
-    .hero-overlay {
-      position: absolute;
-      z-index: -1;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(4,7,11,.48), rgba(4,7,11,.3) 48%, rgba(4,7,11,.48)),
-        linear-gradient(0deg, rgba(4,7,11,.68), rgba(4,7,11,.16) 52%, rgba(4,7,11,.36));
-    }
     .brand {
       position: absolute;
       top: clamp(24px, 4vh, 42px);
@@ -58,37 +50,20 @@
       align-items: center;
     }
     .brand img { display: block; width: clamp(116px, 10vw, 156px); height: auto; }
-    h1 {
-      max-width: 1000px;
-      margin: 0;
-      text-align: center;
-      color: var(--white);
-      font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-      font-size: clamp(48px, 7vw, 96px);
-      font-weight: 400;
-      letter-spacing: -.035em;
-      line-height: 1.08;
-      text-wrap: balance;
-      text-shadow: 0 3px 35px rgba(0,0,0,.42);
-    }
     @media (max-width: 600px) {
       .launch-page { padding: 100px 24px 60px; }
       .hero-image { object-position: 54% center; }
-      .hero-overlay { background: linear-gradient(0deg, rgba(4,7,11,.74), rgba(4,7,11,.38) 55%, rgba(4,7,11,.42)); }
       .brand img { width: 104px; }
-      h1 { font-size: clamp(43px, 11vw, 60px); }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
   <main class="launch-page">
-    <img class="hero-image" src="hero.png" alt="Illustrative PLASSX satellite above Earth">
-    <div class="hero-overlay" aria-hidden="true"></div>
+    <img class="hero-image" src="hero01.png" alt="Satellite above Earth's horizon with the HUMAN ONE message for the future">
     <a class="brand" href="../index.html" aria-label="PLASSX HUMAN ONE">
       <img src="logo.png" alt="PLASSX">
     </a>
-    <h1>One Message. One Humanity.</h1>
   </main>
 </body>
 </html>
